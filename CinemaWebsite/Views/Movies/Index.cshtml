@@ -1,0 +1,156 @@
+@model IEnumerable<CinemaWebsite.Models.Movie>
+
+@{
+    ViewData["Title"] = "Movies";
+    var selectedDay = ViewBag.SelectedDay as DayOfWeek?;
+    var days = Enum.GetValues<DayOfWeek>();
+}
+
+<h3>Movies</h3>
+
+<form method="get" class="row g-2 mb-3">
+
+    <!-- Search -->
+    <div class="col-md-3">
+        <input class="form-control"
+               name="search"
+               value="@Context.Request.Query["search"]"
+               placeholder="Search movies..."/>
+    </div>
+
+    <!-- Language -->
+    <div class="col-md-2">
+        <input class="form-control"
+               name="language"
+               value="@Context.Request.Query["language"]"
+               placeholder="Language"/>
+    </div>
+
+    <!-- Status -->
+    <div class="col-md-2">
+        <select class="form-select" name="status">
+            <option value="">Any status</option>
+
+            <option value="NowShowing"
+                    selected="@(Context.Request.Query["status"] == "NowShowing")">
+                Now showing
+            </option>
+
+            <option value="ComingSoon"
+                    selected="@(Context.Request.Query["status"] == "ComingSoon")">
+                Coming soon
+            </option>
+        </select>
+    </div>
+
+    <!-- Day -->
+    <div class="col-md-2">
+        <select class="form-select" name="day">
+            <option value="" selected="@(selectedDay is null)">Any day</option>
+
+            @foreach (var day in days) {
+                <option value="@day"
+                        selected="@(selectedDay.HasValue && day == selectedDay.Value)">
+                    @day
+                </option>
+            }
+
+        </select>
+    </div>
+
+    <!-- genre -->
+    <div class="col-md-2">
+        <select name="genreId" class="form-select">
+            <option value="">All Genres</option>
+
+            @foreach (var genre in ViewBag.Genres) {
+                <option value="@genre.Id" selected="@(Context.Request.Query["genreId"] == genre.Id.ToString())">
+                    @genre.Name
+                </option>
+            }
+        </select>
+    </div>
+
+
+    <!-- Filter -->
+    <div class="col-md-1">
+        <button class="btn btn-primary w-100" type="submit">
+            Filter
+        </button>
+    </div>
+
+</form>
+
+@if (User.IsInRole("Admin")) {
+    <p>
+        <a asp-action="Create" class="btn btn-success">
+            Create movie
+        </a>
+    </p>
+}
+
+<table class="table table-striped">
+
+    <thead>
+    <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Language</th>
+        <th>Release</th>
+        @* <th>Day</th> *@
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    @foreach (var item in Model) {
+        <tr>
+            <th><img src="@item.PosterUrl" width="80"/></th>
+            <td>
+                @if (selectedDay.HasValue) {
+                    <a asp-action="Details" asp-route-id="@item.Id" asp-route-day="@selectedDay.Value">@item.Title</a>
+                }
+                else {
+                    <a asp-action="Details" asp-route-id="@item.Id">@item.Title</a>
+                }
+            </td>
+
+            <td>@item.Language</td>
+
+            <td>
+                @item.ReleaseDate.ToString("dd/MM/yyyy")
+            </td>
+
+            @* <td> *@
+            @*     @item.ReleaseDate.ToString("dddd") *@
+            @* </td> *@
+
+            <td>
+
+                @* <a asp-action="Details" asp-route-id="@item.Id"> Details </a> *@
+
+                @if (User.IsInRole("Admin")) {
+                    <a asp-action="Edit"
+                       asp-route-id="@item.Id">
+                        Edit
+                    </a>
+
+                    <span> | </span>
+
+                    <a asp-action="Delete"
+                       asp-route-id="@item.Id">
+                        Delete
+                    </a>
+                }
+
+            </td>
+
+        </tr>
+    }
+
+    </tbody>
+
+</table>
+
+
