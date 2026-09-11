@@ -1,0 +1,107 @@
+@model CinemaWebsite.ViewModels.ReservationDisplayViewModel
+@{
+    ViewData["Title"] = "Reservation Details";
+
+    var (statusIcon, statusHeading, statusSubtext, statusModifier, statusLabel) = Model.Status switch
+    {
+        ReservationStatus.Confirmed => (
+            "✓",
+            "Reservation confirmed!",
+            "Your booking details are ready.",
+            "is-confirmed",
+            "Paid"),
+        ReservationStatus.Cancelled when Model.ExpiresAtUtc.HasValue => (
+            "⏱",
+            "This reservation expired",
+            "The payment window closed and the seats have been released.",
+            "is-expired",
+            "Expired"),
+        ReservationStatus.Cancelled => (
+            "✕",
+            "Reservation cancelled",
+            "This booking is no longer valid and the seats have been released.",
+            "is-cancelled",
+            "Cancelled"),
+        _ => (
+            "→",
+            "Complete your payment",
+            "Your seats are being held — finish payment before the hold expires.",
+            "is-pending",
+            "Awaiting payment")
+    };
+
+    var canCancel = Model.Status != ReservationStatus.Cancelled && Model.ScreeningStartTime > DateTime.UtcNow;
+}
+
+<section class="confirmation-page">
+    <div class="confirmation-card">
+        <div class="confirmation-status">
+            <span class="confirmation-icon @statusModifier" aria-hidden="true">@statusIcon</span>
+            <div>
+                <h1>@statusHeading</h1>
+                <p>@statusSubtext</p>
+            </div>
+        </div>
+
+        @if (TempData["PaymentSuccessMessage"] is string paymentSuccessMessage)
+        {
+            <div class="confirmation-alert">@paymentSuccessMessage</div>
+        }
+
+        <div class="confirmation-details">
+            <div class="confirmation-row">
+                <span>Movie</span>
+                <strong>@Model.MovieTitle</strong>
+            </div>
+            <div class="confirmation-row">
+                <span>Hall</span>
+                <strong>@Model.HallName</strong>
+            </div>
+            <div class="confirmation-row">
+                <span>Screening</span>
+                <strong>@Model.ScreeningStartTime.ToString("dd/MM/yyyy HH:mm")</strong>
+            </div>
+            <div class="confirmation-row">
+                <span>Seats</span>
+                <strong>@(Model.Seats.Any() ? string.Join(", ", Model.Seats.Select(s => $"Row {s.Row}, Seat {s.Number}")) : "No seats assigned")</strong>
+            </div>
+            <div class="confirmation-row">
+                <span>Tickets</span>
+                <strong>@Model.NumberOfTickets</strong>
+            </div>
+            <div class="confirmation-row">
+                <span>Status</span>
+                <strong>@statusLabel</strong>
+            </div>
+
+            <hr />
+
+            <div class="confirmation-total">
+                <span>Total</span>
+                <strong>@Model.TotalPrice.ToString("C", new System.Globalization.CultureInfo("de-DE"))</strong>
+                @* Force a specific culture: *@
+                @* @Model.TotalPrice.ToString("C", new System.Globalization.CultureInfo("en-GB")) *@
+                @* // Output: £1,234.50 *@
+                    
+                @* Remove the currency symbol but keep formatting: *@
+                @* @Model.TotalPrice.ToString("N2") // Output: 1,234.50 *@
+                    
+                @* Use a custom symbol: *@
+                @* var culture = (System.Globalization.CultureInfo)System.Globalization.CultureInfo.CurrentCulture.Clone(); *@
+                @* culture.NumberFormat.CurrencySymbol = "USD"; *@
+                @* @Model.TotalPrice.ToString("C", culture) // Output: USD1,234.50 *@
+            </div>
+        </div>
+
+        <div class="confirmation-actions">
+            <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Back</a>
+            @if (canCancel)
+            {
+                <form asp-action="Cancel" asp-route-id="@Model.Id" asp-route-token="@(ViewBag.GuestToken as string)" method="post" class="d-inline">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-danger">Cancel Reservation</button>
+                </form>
+            }
+        </div>
+    </div>
+</section>
