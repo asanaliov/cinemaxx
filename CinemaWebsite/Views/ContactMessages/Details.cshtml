@@ -1,4 +1,40 @@
 @model CinemaWebsite.Models.ContactMessage
-<h3>@Model.Subject</h3><p><strong>@L["From"]:</strong> @Model.Name (@Model.Email)</p><p>@Model.Message</p>
-<form asp-action="MarkAsRead" method="post" class="mb-2"><input type="hidden" name="id" value="@Model.Id" /><button class="btn btn-secondary" type="submit">@L["Mark as read"]</button></form>
-<a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">@L["Delete"]</a>
+
+@{
+    ViewData["Title"] = Model.Subject;
+}
+
+<div class="page-header">
+    <h2>@Model.Subject</h2>
+    <div class="d-flex gap-2">
+        @if (!Model.IsRead)
+        {
+            <form asp-action="MarkAsRead" method="post">
+                <input type="hidden" name="id" value="@Model.Id"/>
+                <button class="btn btn-outline-secondary btn-sm" type="submit">@L["Mark as read"]</button>
+            </form>
+        }
+        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger btn-sm">@L["Delete"]</a>
+        <a asp-action="Index" class="btn btn-outline-secondary btn-sm">← @L["Back"]</a>
+    </div>
+</div>
+
+<div class="form-page-card">
+    <div class="card">
+        <div class="card-body">
+            <div class="row g-3 mb-3">
+                <div class="col-sm-6">
+                    <div class="text-muted small">@L["From"]</div>
+                    <div class="fw-semibold">@Model.Name</div>
+                    <a href="mailto:@Model.Email" class="small">@Model.Email</a>
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-muted small">@L["Received"]</div>
+                    <div class="fw-semibold">@Model.SentAt.ToLocalTime().ToString("dd MMM yyyy, HH:mm")</div>
+                </div>
+            </div>
+            <hr class="border-secondary border-opacity-25"/>
+            <p class="message-body mb-0">@Model.Message</p>
+        </div>
+    </div>
+</div>

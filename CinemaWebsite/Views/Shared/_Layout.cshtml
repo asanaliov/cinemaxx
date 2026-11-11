@@ -1,6 +1,8 @@
 @{
     var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
-    bool IsActive(string controller) => string.Equals(currentController, controller, StringComparison.OrdinalIgnoreCase);
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+    bool IsActive(string controller) => string.Equals(currentController, controller, StringComparison.OrdinalIgnoreCase)
+        && !(controller == "ContactMessages" && currentAction != "Create");
     var pageTitle = ViewData["Title"]?.ToString();
 }
 <!DOCTYPE html>

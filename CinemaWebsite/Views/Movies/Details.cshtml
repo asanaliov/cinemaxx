@@ -31,31 +31,16 @@
     }
 </div>
 
-<!-- Cinematic Hero Section -->
-<div class="position-relative mb-5" style="border-radius: 16px; overflow: hidden; border: 1px solid var(--border);">
-    <!-- Blurred Backdrop -->
-    <div class="position-absolute w-100 h-100" style="
-        background-image: url('@(string.IsNullOrWhiteSpace(Model.PosterUrl) ? "https://placehold.co/400x600/1A1814/D4A341?text=No+Poster" : Model.PosterUrl)');
-        background-size: cover;
-        background-position: center;
-        filter: blur(40px);
-        transform: scale(1.15);
-        z-index: 1;">
-    </div>
-    <!-- Dark Overlays for readability -->
-    <div class="position-absolute w-100 h-100" style="
-        background: linear-gradient(90deg, var(--bg) 0%, rgba(5,5,7,0.85) 40%, rgba(5,5,7,0.4) 100%);
-        z-index: 2;">
-    </div>
+<div class="movie-hero mb-5">
+    <div class="movie-hero-backdrop" style="background-image: url('@(string.IsNullOrWhiteSpace(Model.PosterUrl) ? "https://placehold.co/400x600/1A1814/D4A341?text=No+Poster" : Model.PosterUrl)');" aria-hidden="true"></div>
+    <div class="movie-hero-shade" aria-hidden="true"></div>
     
-    <div class="position-relative z-3 p-4 p-lg-5">
+    <div class="movie-hero-content">
         <div class="row g-4 align-items-center">
             <!-- Poster -->
             <div class="col-sm-5 col-md-4 col-lg-3">
-                <div class="rounded overflow-hidden shadow-lg" style="aspect-ratio: 2/3; border: 1px solid rgba(255,255,255,0.1);">
+                <div class="movie-hero-poster">
                     <img src="@(string.IsNullOrWhiteSpace(Model.PosterUrl) ? "https://placehold.co/400x600/1A1814/D4A341?text=No+Poster" : Model.PosterUrl)"
-                         class="img-fluid w-100 h-100"
-                         style="object-fit:cover"
                          alt="@L["{0} poster", Model.Title]"/>
                 </div>
             </div>
@@ -63,66 +48,66 @@
             <!-- Movie Details -->
             <div class="col-sm-7 col-md-8 col-lg-9 d-flex flex-column gap-3">
                 <div>
-                    <h1 class="display-5 fw-bold mb-2 text-white" style="text-shadow: 0 4px 20px rgba(0,0,0,0.5);">@Model.Title</h1>
+                    <h1 class="movie-hero-title">@Model.Title</h1>
                     
                     <div class="d-flex flex-wrap gap-2 mb-4 align-items-center">
                         @if (Model.MovieGenres.Any())
                         {
                             @foreach (var mg in Model.MovieGenres)
                             {
-                                <span class="badge" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); font-weight: 500; font-size: 0.85rem;">@mg.Genre.Name</span>
+                                <span class="genre-chip">@mg.Genre.Name</span>
                             }
                         }
                         @if (Model.Rating > 0)
                         {
-                            <span class="badge bg-warning text-dark fw-bold ms-2 fs-6">★ @Model.Rating</span>
+                            <span class="rating-chip">★ @Model.Rating</span>
                         }
                     </div>
 
                     @if (!string.IsNullOrWhiteSpace(Model.Description))
                     {
-                        <p class="fs-5 text-white-50 mb-0" style="max-width: 800px; line-height: 1.6;">@Model.Description</p>
+                        <p class="movie-hero-synopsis">@Model.Description</p>
                     }
                 </div>
 
                 <!-- Quick Metadata Grid -->
-                <div class="row g-3 mt-2" style="max-width: 800px;">
+                <div class="row g-3 mt-1 movie-facts">
                     @if (!string.IsNullOrWhiteSpace(Model.Director))
                     {
                         <div class="col-6 col-md-4">
-                            <div class="text-white-50 small text-uppercase tracking-wider mb-1" style="font-size: 0.75rem;">@L["Director"]</div>
+                            <div class="fact-label">@L["Director"]</div>
                             <div class="fw-semibold text-white">@Model.Director</div>
                         </div>
                     }
                     @if (!string.IsNullOrWhiteSpace(Model.Cast))
                     {
                         <div class="col-6 col-md-4">
-                            <div class="text-white-50 small text-uppercase tracking-wider mb-1" style="font-size: 0.75rem;">@L["Cast"]</div>
+                            <div class="fact-label">@L["Cast"]</div>
                             <div class="fw-semibold text-white text-truncate" title="@Model.Cast">@Model.Cast</div>
                         </div>
                     }
                     @if (Model.Duration > 0)
                     {
                         <div class="col-6 col-md-4">
-                            <div class="text-white-50 small text-uppercase tracking-wider mb-1" style="font-size: 0.75rem;">@L["Duration"]</div>
+                            <div class="fact-label">@L["Duration"]</div>
                             <div class="fw-semibold text-white">@L["{0} min", Model.Duration]</div>
                         </div>
                     }
                     <div class="col-6 col-md-4">
-                        <div class="text-white-50 small text-uppercase tracking-wider mb-1" style="font-size: 0.75rem;">@L["Release"]</div>
+                        <div class="fact-label">@L["Release"]</div>
                         <div class="fw-semibold text-white">@Model.ReleaseDate.ToString("MMM yyyy")</div>
                     </div>
                     @if (!string.IsNullOrWhiteSpace(Model.AgeRating))
                     {
                         <div class="col-6 col-md-4">
-                            <div class="text-white-50 small text-uppercase tracking-wider mb-1" style="font-size: 0.75rem;">@L["Age Rating"]</div>
+                            <div class="fact-label">@L["Age Rating"]</div>
                             <div class="fw-semibold text-white">@Model.AgeRating</div>
                         </div>
                     }
                     @if (!string.IsNullOrWhiteSpace(Model.Language))
                     {
                         <div class="col-6 col-md-4">
-                            <div class="text-white-50 small text-uppercase tracking-wider mb-1" style="font-size: 0.75rem;">@L["Language"]</div>
+                            <div class="fact-label">@L["Language"]</div>
                             <div class="fw-semibold text-white">@Model.Language @(string.IsNullOrWhiteSpace(Model.SubtitleLanguage) ? "" : " " + L["(Sub: {0})", Model.SubtitleLanguage])</div>
                         </div>
                     }
@@ -154,19 +139,19 @@
             <div class="d-flex flex-column gap-3">
                 @foreach (var screening in Model.Screenings.OrderBy(s => s.StartTime))
                 {
-                    <div class="card border-0" style="background: var(--bg-card); border-left: 4px solid var(--accent) !important; border-radius: 8px;">
+                    <div class="card showtime-card">
                         <div class="card-body p-3 p-md-4">
                             <div class="row align-items-center g-3 text-center text-md-start">
                                 <div class="col-12 col-md-3">
-                                    <div class="text-muted small text-uppercase tracking-wider mb-1" style="font-size: 0.7rem;">@L["Date"]</div>
+                                    <div class="fact-label">@L["Date"]</div>
                                     <div class="fw-bold fs-5">@screening.StartTime.ToString("dd MMM")</div>
                                 </div>
                                 <div class="col-6 col-md-3 border-md-start border-secondary border-opacity-25 ps-md-4">
-                                    <div class="text-muted small text-uppercase tracking-wider mb-1" style="font-size: 0.7rem;">@L["Time"]</div>
-                                    <div class="fw-bold fs-4 text-white" style="color:var(--accent) !important;">@screening.StartTime.ToString("HH:mm")</div>
+                                    <div class="fact-label">@L["Time"]</div>
+                                    <div class="showtime-time">@screening.StartTime.ToString("HH:mm")</div>
                                 </div>
                                 <div class="col-6 col-md-3 border-start border-secondary border-opacity-25 ps-4">
-                                    <div class="text-muted small text-uppercase tracking-wider mb-1" style="font-size: 0.7rem;">@L["Hall"]</div>
+                                    <div class="fact-label">@L["Hall"]</div>
                                     <div class="fw-semibold">@screening.CinemaHall.Name</div>
                                     <div class="text-success small fw-bold mt-1">@screening.Price.ToMoney()</div>
                                 </div>
@@ -184,7 +169,7 @@
         }
         else
         {
-            <div class="empty-state card border-0 p-5" style="background: var(--bg-elevated); border-radius: 12px;">
+            <div class="empty-state card">
                 <div class="empty-icon fs-1 mb-3">🎟️</div>
                 <h5 class="fw-bold text-white">@L["No Screenings Available"]</h5>
                 <p class="text-muted">@L["There are currently no upcoming showtimes scheduled for this movie."]</p>
@@ -197,7 +182,7 @@
         <h4 class="fw-bold mb-4">@L["Trailer"]</h4>
         @if (!string.IsNullOrWhiteSpace(embedUrl))
         {
-            <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow" style="border: 1px solid rgba(255,255,255,0.1);">
+            <div class="ratio ratio-16x9 trailer-frame">
                 <iframe src="@embedUrl"
                         title="@L["{0} trailer", Model.Title]"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -208,14 +193,14 @@
         }
         else if (!string.IsNullOrWhiteSpace(trailer))
         {
-            <a href="@trailer" target="_blank" rel="noopener" class="card border-0 text-center p-5 text-decoration-none" style="background: var(--bg-card); border-radius: 16px;">
+            <a href="@trailer" target="_blank" rel="noopener" class="card trailer-placeholder text-decoration-none">
                 <div class="fs-1 mb-2">▶️</div>
                 <div class="fw-bold text-white">@L["Watch Trailer on YouTube"] ↗</div>
             </a>
         }
         else
         {
-            <div class="card border-0 text-center p-5" style="background: var(--bg-elevated); border-radius: 16px;">
+            <div class="card trailer-placeholder">
                 <div class="text-muted">@L["No trailer available"]</div>
             </div>
         }

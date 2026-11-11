@@ -14,28 +14,28 @@
     </div>
     
     <div class="col-6 col-md-4 col-lg-3">
-        <div class="stat-card">
+        <a class="stat-card" href="@Url.Action("Index", "Movies")">
             <span class="stat-label">@L["Total Movies"]</span>
             <span class="stat-value text-primary">@Model.TotalMovies</span>
-        </div>
+        </a>
     </div>
     <div class="col-6 col-md-4 col-lg-3">
-        <div class="stat-card">
+        <a class="stat-card" href="@Url.Action("Index", "Movies", new { status = "NowShowing" })">
             <span class="stat-label">@L["Now showing"]</span>
             <span class="stat-value text-success">@Model.NowShowingMovies</span>
-        </div>
+        </a>
     </div>
     <div class="col-6 col-md-4 col-lg-3">
-        <div class="stat-card">
+        <a class="stat-card" href="@Url.Action("Index", "Movies", new { status = "ComingSoon" })">
             <span class="stat-label">@L["Coming soon"]</span>
             <span class="stat-value" style="color: var(--accent);">@Model.ComingSoonMovies</span>
-        </div>
+        </a>
     </div>
     <div class="col-6 col-md-4 col-lg-3">
-        <div class="stat-card">
+        <a class="stat-card" href="@Url.Action("Index", "Screenings")">
             <span class="stat-label">@L["Screenings"]</span>
             <span class="stat-value">@Model.TotalScreenings</span>
-        </div>
+        </a>
     </div>
 </div>
 
@@ -45,22 +45,22 @@
     </div>
     
     <div class="col-6 col-md-4 col-lg-3">
-        <div class="stat-card">
+        <a class="stat-card" href="@Url.Action("Index", "Reservations")">
             <span class="stat-label">@L["Total"]</span>
             <span class="stat-value text-primary">@Model.TotalReservations</span>
-        </div>
+        </a>
     </div>
     <div class="col-6 col-md-4 col-lg-3">
-        <div class="stat-card">
+        <a class="stat-card" href="@Url.Action("Index", "Reservations")">
             <span class="stat-label">@L["Confirmed"]</span>
             <span class="stat-value text-success">@Model.ConfirmedReservations</span>
-        </div>
+        </a>
     </div>
     <div class="col-6 col-md-4 col-lg-3">
-        <div class="stat-card">
+        <a class="stat-card" href="@Url.Action("Index", "Reservations")">
             <span class="stat-label">@L["Cancelled"]</span>
             <span class="stat-value text-danger">@Model.CancelledReservations</span>
-        </div>
+        </a>
     </div>
 </div>
 
@@ -70,29 +70,29 @@
     </div>
     
     <div class="col-6 col-md-4 col-lg-3">
-        <div class="stat-card">
+        <a class="stat-card" href="@Url.Action("Index", "CinemaHalls")">
             <span class="stat-label">@L["Cinema Halls"]</span>
             <span class="stat-value">@Model.TotalHalls</span>
-        </div>
+        </a>
     </div>
     <div class="col-6 col-md-4 col-lg-3">
-        <div class="stat-card">
+        <a class="stat-card" href="@Url.Action("Index", "Genres")">
             <span class="stat-label">@L["Genres"]</span>
             <span class="stat-value">@Model.TotalGenres</span>
-        </div>
+        </a>
     </div>
     <div class="col-6 col-md-4 col-lg-3">
-        <div class="stat-card">
+        <a class="stat-card" href="@Url.Action("Index", "News")">
             <span class="stat-label">@L["Published News"]</span>
             <span class="stat-value">@Model.PublishedNews</span>
-        </div>
+        </a>
     </div>
     <div class="col-6 col-md-4 col-lg-3">
-        <div class="stat-card">
+        <a class="stat-card" href="@Url.Action("Index", "ContactMessages")">
             <span class="stat-label">@L["Unread Messages"]</span>
             <span class="stat-value @(Model.UnreadContactMessages > 0 ? "text-danger" : "text-success")">
                 @Model.UnreadContactMessages
             </span>
-        </div>
+        </a>
     </div>
 </div>

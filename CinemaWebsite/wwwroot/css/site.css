@@ -609,6 +609,240 @@ table {
   backdrop-filter: blur(10px);
 }
 
+/* ── shared eyebrow label ───────────────────────────────── */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  margin-bottom: .9rem;
+  color: var(--accent);
+  font-size: .85rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+}
+.eyebrow::before {
+  content: '';
+  width: 1.75rem;
+  height: 1px;
+  background: currentColor;
+}
+
+/* ── tables: one card style for every admin list ─────────── */
+.table-responsive {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+.table-responsive > .table {
+  margin-bottom: 0;
+}
+.table-responsive > .table > :not(caption) > * > * {
+  padding: .9rem 1.1rem;
+}
+.table-responsive > .table thead th {
+  background: var(--bg-elevated);
+}
+.table-responsive > .table tbody tr:last-child td {
+  border-bottom: 0;
+}
+.table-responsive > .table tbody tr {
+  transition: background-color .15s ease;
+}
+.table-responsive > .table td .btn + .btn,
+.table-responsive > .table td .btn + form,
+.table-responsive > .table td form + .btn {
+  margin-left: .35rem;
+}
+
+/* ── admin inbox ─────────────────────────────────────────── */
+tr.is-unread td {
+  font-weight: 600;
+}
+tr.is-unread td:first-child {
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+.badge-new {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.message-body {
+  white-space: pre-line;
+  line-height: 1.7;
+  max-width: 70ch;
+}
+
+/* ── admin dashboard stat links ──────────────────────────── */
+a.stat-card {
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color .2s ease, transform .2s ease;
+}
+a.stat-card:hover {
+  color: var(--text);
+  border-color: rgba(var(--accent-rgb), .45);
+  transform: translateY(-2px);
+}
+
+/* ── contact page ────────────────────────────────────────── */
+.contact-page {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 3rem;
+  align-items: start;
+  padding: 2rem 0 1rem;
+}
+.contact-intro h1 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  line-height: 1.05;
+  margin-bottom: 1rem;
+}
+.contact-points {
+  list-style: none;
+  padding: 0;
+  margin: 1.75rem 0 0;
+  display: grid;
+  gap: .7rem;
+}
+.contact-points li {
+  display: flex;
+  gap: .7rem;
+  align-items: baseline;
+  color: var(--text-muted);
+}
+.contact-points li::before {
+  content: '';
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  transform: translateY(-2px);
+}
+.contact-card .card-body {
+  padding: 1.75rem;
+}
+
+/* ── movie details ───────────────────────────────────────── */
+.movie-hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+}
+.movie-hero-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-size: cover;
+  background-position: center;
+  filter: blur(40px) saturate(1.1);
+  transform: scale(1.15);
+}
+.movie-hero-shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, var(--bg) 0%, rgba(12, 11, 10, .88) 45%, rgba(12, 11, 10, .45) 100%);
+}
+.movie-hero-content {
+  padding: 2rem;
+}
+.movie-hero-poster {
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+.movie-hero-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.movie-hero-title {
+  margin-bottom: .75rem;
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  line-height: 1;
+}
+.movie-hero-synopsis {
+  max-width: 62ch;
+  margin: 0;
+  color: rgba(245, 242, 236, .75);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+.genre-chip,
+.rating-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: .25rem .65rem;
+  border-radius: 6px;
+  font-size: .8rem;
+  font-weight: 600;
+}
+.genre-chip {
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .14);
+}
+.rating-chip {
+  margin-left: .25rem;
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.movie-facts {
+  max-width: 800px;
+}
+.fact-label {
+  margin-bottom: .25rem;
+  color: var(--text-muted);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.showtime-card {
+  border-left: 3px solid var(--accent);
+  transition: border-color .2s ease, transform .2s ease;
+}
+.showtime-card:hover {
+  border-color: rgba(var(--accent-rgb), .45);
+  border-left-color: var(--accent);
+  transform: translateX(3px);
+}
+.showtime-time {
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.trailer-frame {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+.trailer-placeholder {
+  padding: 3rem 1.5rem;
+  text-align: center;
+  background: var(--bg-elevated);
+}
+
+@media (min-width: 992px) {
+  .movie-hero-content {
+    padding: 3rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .contact-page {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
 /* ── responsive helpers ──────────────────────────────────── */
 @media (max-width: 575.98px) {
   .page-header {
