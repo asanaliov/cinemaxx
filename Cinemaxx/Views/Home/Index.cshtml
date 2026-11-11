@@ -9,6 +9,8 @@
     ViewData["BodyClass"] = "home-page";
 }
 
+<partial name="_Spidey"/>
+
 <section class="home-hero">
     <div class="home-hero-copy">
         <p class="home-eyebrow">@(Model.NowShowingMovies.Any() ? L["Now showing at Cinemaxx"] : "Cinemaxx")</p>
