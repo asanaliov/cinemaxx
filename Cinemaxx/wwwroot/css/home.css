@@ -18,6 +18,56 @@ body.home-page {
         var(--bg);
 }
 
+/* ── web-slinger hanging from the navbar ─────────────────── */
+.spidey {
+    position: absolute;
+    top: 76px;
+    left: 14px;
+    z-index: 5;
+    width: 56px;
+    pointer-events: none;
+    transform-origin: 50% 0;
+    animation:
+        spidey-drop 1.5s cubic-bezier(.22, 1.25, .36, 1) .5s both,
+        spidey-sway 4.5s ease-in-out 2s infinite;
+}
+.spidey-thread {
+    display: block;
+    width: 1.5px;
+    height: 90px;
+    margin: 0 auto;
+    background: linear-gradient(to bottom, rgba(245, 242, 236, .15), rgba(245, 242, 236, .75));
+}
+.spidey-figure {
+    display: block;
+    width: 56px;
+    height: 112px;
+    filter: drop-shadow(0 10px 14px rgba(0, 0, 0, .55));
+}
+
+@keyframes spidey-drop {
+    from { translate: 0 -260px; }
+    to { translate: 0 0; }
+}
+
+@keyframes spidey-sway {
+    0%, 100% { rotate: -2.5deg; }
+    50% { rotate: 2.5deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .spidey {
+        animation: none;
+    }
+}
+
+/* only where the page has a left gutter wide enough to keep it off the headline */
+@media (max-width: 1399.98px) {
+    .spidey {
+        display: none;
+    }
+}
+
 /* ── hero ────────────────────────────────────────────────── */
 .home-hero {
     position: relative;
