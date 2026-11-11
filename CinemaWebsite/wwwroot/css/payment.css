@@ -1,0 +1,423 @@
+.payment-page,
+.confirmation-page {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 3rem 0 2rem;
+    color: var(--text);
+}
+
+.payment-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-bottom: 1.25rem;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+}
+
+.payment-breadcrumb a {
+    color: var(--text-muted);
+    text-decoration: none;
+}
+
+.payment-breadcrumb a:hover {
+    color: var(--text);
+}
+
+.payment-card,
+.payment-summary,
+.confirmation-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.2);
+}
+
+/* ── booking summary card (Reservations/Create) ─────────────── */
+.booking-summary-card {
+    top: 100px;
+    border-radius: var(--radius-lg);
+}
+
+.poster-frame {
+    position: relative;
+    aspect-ratio: 2 / 3;
+}
+
+.poster-frame img {
+    object-fit: cover;
+}
+
+.poster-overlay {
+    background: linear-gradient(to top, rgba(5, 5, 7, 1) 0%, rgba(5, 5, 7, 0.8) 40%, transparent 100%);
+}
+
+.badge-accent-solid {
+    background: var(--accent);
+    color: var(--on-accent);
+}
+
+.reservation-policy-banner {
+    background: var(--accent-dim);
+    border: 1px solid rgba(var(--accent-rgb), 0.3);
+    border-radius: var(--radius-lg);
+}
+
+.payment-card {
+    padding: 1.9rem;
+}
+
+.payment-title {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+.payment-subtitle {
+    margin: 0.75rem 0 1.5rem;
+    color: var(--text-muted);
+}
+
+.payment-countdown {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent-dim);
+    color: var(--accent-hover);
+    border: 1px solid rgba(var(--accent-rgb), 0.3);
+    border-radius: 999px;
+    padding: 0.45rem 1rem;
+    font-size: 0.88rem;
+    margin-bottom: 1.5rem;
+}
+
+.payment-countdown strong {
+    font-variant-numeric: tabular-nums;
+}
+
+.payment-countdown.is-urgent {
+    background: rgba(229, 57, 53, 0.15);
+    color: var(--danger);
+    border-color: rgba(229, 57, 53, 0.35);
+}
+
+.payment-field {
+    margin-bottom: 1rem;
+}
+
+.payment-page .form-label {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.payment-page .form-control {
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--bg-elevated);
+    color: var(--text);
+    min-height: 2.9rem;
+    padding: 0.65rem 0.85rem;
+}
+
+.payment-page .form-control:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 0.22rem var(--accent-dim);
+}
+
+.payment-page .form-text {
+    color: var(--text-muted);
+}
+
+.payment-cta {
+    width: 100%;
+    border-radius: var(--radius-sm);
+    min-height: 3rem;
+    margin-top: 0.4rem;
+    font-weight: 600;
+    font-size: 1rem;
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--on-accent);
+    transition: all 0.2s ease;
+}
+
+.payment-cta:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: var(--on-accent);
+    transform: translateY(-2px);
+}
+
+.payment-summary {
+    position: sticky;
+    top: 95px;
+    padding: 1.5rem;
+}
+
+.payment-summary-title {
+    margin: 0 0 1rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.payment-summary-row,
+.confirmation-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.payment-summary-row span,
+.confirmation-row span {
+    color: var(--text-muted);
+}
+
+.payment-summary-row strong,
+.confirmation-row strong {
+    color: var(--text);
+    text-align: right;
+    font-weight: 600;
+}
+
+.payment-summary hr,
+.confirmation-details hr {
+    border-color: var(--border);
+    margin: 1.2rem 0;
+}
+
+.payment-total,
+.confirmation-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.payment-total span,
+.confirmation-total span {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.payment-total strong,
+.confirmation-total strong {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.confirmation-card {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 1.8rem;
+}
+
+.confirmation-status {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin-bottom: 1.25rem;
+}
+
+.confirmation-icon {
+    width: 2.2rem;
+    height: 2.2rem;
+    flex-shrink: 0;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.confirmation-icon.is-confirmed {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--success);
+}
+
+.confirmation-icon.is-cancelled {
+    background: rgba(229, 57, 53, 0.15);
+    color: var(--danger);
+}
+
+.confirmation-icon.is-pending {
+    background: var(--accent-dim);
+    color: var(--accent-hover);
+}
+
+.confirmation-icon.is-expired {
+    background: var(--border);
+    color: var(--text-muted);
+}
+
+.confirmation-status h1 {
+    margin: 0;
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+.confirmation-status p {
+    margin: 0.2rem 0 0;
+    color: var(--text-muted);
+}
+
+.confirmation-alert {
+    margin-bottom: 1rem;
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 0.9rem;
+}
+
+.confirmation-alert.is-notice {
+    background: var(--accent-dim);
+    color: var(--accent-hover);
+    border-color: rgba(var(--accent-rgb), 0.3);
+}
+
+.confirmation-actions {
+    margin-top: 1.4rem;
+}
+
+.confirmation-actions .btn {
+    border-radius: var(--radius-sm);
+    min-height: 2.8rem;
+    min-width: 8rem;
+    font-weight: 600;
+    line-height: 1.8rem;
+}
+
+/* ── reservations table ─────────────────────────────────────── */
+.reservations-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.reservations-card .table {
+    margin-bottom: 0;
+}
+
+.reservations-card .table thead th {
+    padding: 1rem 1.4rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.reservations-card .table tbody td {
+    padding: 1rem 1.4rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.reservations-card .table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.reservations-card .table tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+.reservation-movie {
+    font-weight: 600;
+}
+
+.reservation-screening-date {
+    font-weight: 500;
+}
+
+.reservation-screening-time {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+.status-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.32rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.status-chip::before {
+    content: "";
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+}
+
+.status-chip.is-confirmed {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--success);
+}
+
+.status-chip.is-cancelled {
+    background: rgba(229, 57, 53, 0.15);
+    color: var(--danger);
+}
+
+.status-chip.is-expired {
+    background: var(--border);
+    color: var(--text-muted);
+}
+
+.status-chip.is-pending {
+    background: var(--accent-dim);
+    color: var(--accent-hover);
+}
+
+.reservations-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+.reservations-actions .btn {
+    border-radius: 999px;
+    font-size: 0.82rem;
+    padding: 0.35rem 0.9rem;
+}
+
+@media (max-width: 991.98px) {
+    .payment-summary {
+        position: static;
+        top: auto;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .payment-card,
+    .payment-summary,
+    .confirmation-card {
+        border-radius: var(--radius-lg);
+        padding: 1.2rem;
+    }
+
+    .payment-title {
+        font-size: 1.65rem;
+    }
+
+    .payment-total strong,
+    .confirmation-total strong {
+        font-size: 1.35rem;
+    }
+
+    .payment-summary-row,
+    .confirmation-row {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .payment-summary-row strong,
+    .confirmation-row strong {
+        text-align: left;
+    }
+}

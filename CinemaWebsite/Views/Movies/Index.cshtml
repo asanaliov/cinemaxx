@@ -1,0 +1,111 @@
+@model IEnumerable<CinemaWebsite.Models.Movie>
+
+@section Head {
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true"/>
+}
+
+@{
+    ViewData["Title"] = "Movies";
+    var selectedDay = ViewBag.SelectedDay as DayOfWeek?;
+    var days = Enum.GetValues<DayOfWeek>();
+}
+
+<div class="page-header align-items-center mb-4 pb-0 border-0">
+    <h1 class="display-6 fw-bold mb-0 text-white">Browse movies</h1>
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-action="Create" class="btn btn-success fw-bold">+ Create Movie</a>
+    }
+</div>
+
+<!-- Cinematic Filter Bar -->
+<div class="card filter-bar border-0 mb-5 p-2 shadow-sm">
+    <form method="get" class="row g-2 align-items-center">
+        <div class="col-12 col-sm-6 col-md">
+            <input class="form-control bg-dark text-white border-0"
+                   aria-label="Search movies"
+                   name="search"
+                   value="@Context.Request.Query["search"]"
+                   placeholder="🔍 Search movies…"/>
+        </div>
+        <div class="col-6 col-sm-4 col-md-2">
+            <input class="form-control bg-dark text-white border-0"
+                   aria-label="Language" name="language"
+                   value="@Context.Request.Query["language"]"
+                   placeholder="🌐 Language"/>
+        </div>
+        <div class="col-6 col-sm-4 col-md-2">
+            <select class="form-select bg-dark text-white border-0" name="status" aria-label="Status">
+                <option value="">Status</option>
+                <option value="NowShowing" selected="@(Context.Request.Query["status"] == "NowShowing")">Now showing</option>
+                <option value="ComingSoon" selected="@(Context.Request.Query["status"] == "ComingSoon")">Coming soon</option>
+            </select>
+        </div>
+        <div class="col-6 col-sm-4 col-md-2">
+            <select class="form-select bg-dark text-white border-0" name="day" aria-label="Day">
+                <option value="" selected="@(selectedDay is null)">Any day</option>
+                @foreach (var day in days)
+                {
+                    <option value="@day" selected="@(selectedDay.HasValue && day == selectedDay.Value)">@day</option>
+                }
+            </select>
+        </div>
+        <div class="col-6 col-sm-4 col-md-2">
+            <select name="genreId" aria-label="Genre" class="form-select bg-dark text-white border-0">
+                <option value="">All genres</option>
+                @foreach (var genre in ViewBag.Genres)
+                {
+                    <option value="@genre.Id" selected="@(Context.Request.Query["genreId"] == genre.Id.ToString())">@genre.Name</option>
+                }
+            </select>
+        </div>
+        <div class="col-12 col-md-auto">
+            <button class="btn btn-primary w-100 fw-bold px-4" type="submit">Filter</button>
+        </div>
+    </form>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="empty-state card border-0 p-5">
+        <div class="empty-icon fs-1 mb-3">🎬</div>
+        <h5 class="fw-bold text-white">No movies found</h5>
+        <p class="text-muted">Try adjusting your filters or search query.</p>
+        <div><a asp-action="Index" class="btn btn-outline-secondary">Clear filters</a></div>
+    </div>
+}
+else
+{
+    <div class="home-card-grid">
+        @foreach (var item in Model)
+        {
+            <article class="home-movie-card h-100 d-flex flex-column">
+                <a class="movie-poster-wrap" asp-action="Details"
+                   asp-route-id="@item.Id"
+                   asp-route-day="@(selectedDay.HasValue ? selectedDay.Value.ToString() : null)">
+                    <img src="@(string.IsNullOrWhiteSpace(item.PosterUrl) ? "https://placehold.co/400x600/1A1814/D4A341?text=No+Poster" : item.PosterUrl)"
+                         alt="@item.Title poster" loading="lazy"/>
+                </a>
+                <div class="movie-card-content flex-grow-1 d-flex flex-column">
+                    <h4 class="mb-2"><a asp-action="Details"
+                           asp-route-id="@item.Id"
+                           asp-route-day="@(selectedDay.HasValue ? selectedDay.Value.ToString() : null)">@item.Title</a></h4>
+                    <div class="d-flex gap-2 flex-wrap align-items-center mb-3">
+                        <small class="text-muted">@item.ReleaseDate.ToString("dd MMM yyyy")</small>
+                        @if (!string.IsNullOrWhiteSpace(item.Language))
+                        {
+                            <span class="badge bg-secondary">@item.Language</span>
+                        }
+                    </div>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <div class="mt-auto d-flex gap-2 border-top border-secondary border-opacity-25 pt-2">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary flex-grow-1">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger flex-grow-1">Delete</a>
+                        </div>
+                    }
+                </div>
+            </article>
+        }
+    </div>
+}

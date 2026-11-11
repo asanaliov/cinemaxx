@@ -1,0 +1,123 @@
+@{
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+    bool IsActive(string controller) => string.Equals(currentController, controller, StringComparison.OrdinalIgnoreCase);
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - Cinemaxx</title>
+    <meta name="description" content="Cinemaxx: see what's playing, pick your seats and book tickets online."/>
+    <meta name="theme-color" content="#0C0B0A"/>
+    <link rel="icon" type="image/svg+xml" href="~/favicon.svg" asp-append-version="true"/>
+    <script type="importmap"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Geist:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/CinemaWebsite.styles.css" asp-append-version="true"/>
+    @await RenderSectionAsync("Head", required: false)
+</head>
+<body class="@ViewData["BodyClass"]">
+<a class="skip-link" href="#main">Skip to content</a>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand brand" asp-area="" asp-controller="Home" asp-action="Index" aria-label="Cinemaxx home">
+                <partial name="_Brand"/>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-lg-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link @(IsActive("Movies") ? "active" : null)" aria-current="@(IsActive("Movies") ? "page" : null)" asp-controller="Movies" asp-action="Index">Movies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(IsActive("Services") ? "active" : null)" aria-current="@(IsActive("Services") ? "page" : null)" asp-controller="Services" asp-action="Index">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(IsActive("News") ? "active" : null)" aria-current="@(IsActive("News") ? "page" : null)" asp-controller="News" asp-action="Index">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(IsActive("ContactMessages") ? "active" : null)" aria-current="@(IsActive("ContactMessages") ? "page" : null)" asp-controller="ContactMessages" asp-action="Create">Contact</a>
+                    </li>
+                    
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Admin Tools
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="adminDropdown">
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="AdminDashboard">Dashboard</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" asp-controller="Screenings" asp-action="Index">Manage Screenings</a></li>
+                                <li><a class="dropdown-item" asp-controller="Reservations" asp-action="Index">All Reservations</a></li>
+                                <li><a class="dropdown-item" asp-controller="CinemaHalls" asp-action="Index">Cinema Halls</a></li>
+                                <li><a class="dropdown-item" asp-controller="Genres" asp-action="Index">Genres</a></li>
+                                <li><a class="dropdown-item" asp-controller="Employees" asp-action="Index">Employees</a></li>
+                                <li><a class="dropdown-item" asp-controller="ContactMessages" asp-action="Index">Inbox</a></li>
+                            </ul>
+                        </li>
+                    }
+                    else if (User.Identity?.IsAuthenticated == true)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link @(IsActive("Reservations") ? "active" : null)" aria-current="@(IsActive("Reservations") ? "page" : null)" asp-controller="Reservations" asp-action="MyReservations">My reservations</a>
+                        </li>
+                    }
+                </ul>
+                <partial name="_LoginPartial"/>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="container">
+    <main id="main" role="main" class="pb-3 pt-4" tabindex="-1">
+        @RenderBody()
+    </main>
+</div>
+
+<footer class="footer pt-5 pb-4 mt-auto">
+    <div class="container">
+        <div class="row g-4 mb-4">
+            <div class="col-lg-6 col-md-6">
+                <a class="brand brand-footer mb-3" asp-area="" asp-controller="Home" asp-action="Index" aria-label="Cinemaxx home">
+                    <partial name="_Brand"/>
+                </a>
+                <p class="footer-blurb text-white-50 small">New releases and old favourites on a proper big screen. Check showtimes, choose your seats and book in a couple of minutes.</p>
+            </div>
+            <div class="col-lg-3 col-md-3 col-6">
+                <h6 class="fw-bold text-white mb-3">Explore</h6>
+                <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
+                    <li><a class="text-white-50 text-decoration-none footer-link" asp-controller="Movies" asp-action="Index">Now Showing</a></li>
+                    <li><a class="text-white-50 text-decoration-none footer-link" asp-controller="Movies" asp-action="Index" asp-route-status="ComingSoon">Coming Soon</a></li>
+                    <li><a class="text-white-50 text-decoration-none footer-link" asp-controller="News" asp-action="Index">Latest News</a></li>
+                    <li><a class="text-white-50 text-decoration-none footer-link" asp-controller="Services" asp-action="Index">Our Services</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-3 col-6">
+                <h6 class="fw-bold text-white mb-3">Support</h6>
+                <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
+                    <li><a class="text-white-50 text-decoration-none footer-link" asp-controller="ContactMessages" asp-action="Create">Contact Us</a></li>
+                    <li><a class="text-white-50 text-decoration-none footer-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="pt-4 border-top border-secondary border-opacity-25">
+            <p class="text-white-50 small mb-0">&copy; @DateTime.Now.Year Cinemaxx. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+<partial name="_CookieConsent"/>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
