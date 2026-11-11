@@ -23,8 +23,18 @@ public static class DatabaseSeeder
             }
         }
 
-        const string adminEmail = "admin@motion.cinema";
-        var admin = await userManager.Users.FirstOrDefaultAsync(u => u.Email == adminEmail);
+        const string adminEmail = "admin@cinemaxx.cinema";
+        const string legacyAdminEmail = "admin@motion.cinema";
+        var admin = await userManager.Users.FirstOrDefaultAsync(u => u.Email == adminEmail)
+                    ?? await userManager.Users.FirstOrDefaultAsync(u => u.Email == legacyAdminEmail);
+        if (admin is not null && admin.Email != adminEmail)
+        {
+            // Databases seeded before the rebrand: rename the old admin instead of adding a second one.
+            admin.UserName = adminEmail;
+            admin.Email = adminEmail;
+            await userManager.UpdateAsync(admin);
+        }
+
         if (admin is null)
         {
             admin = new ApplicationUser
