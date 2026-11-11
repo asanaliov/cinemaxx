@@ -7,10 +7,10 @@
     @await RenderSectionAsync("Head", required: false)
 }
 
-<section class="auth-page" aria-label="Account">
+<section class="auth-page" aria-label="@L["Account"]">
     <div class="auth-card">
         <div class="auth-header">
-            <span class="auth-eyebrow">Your cinema account</span>
+            <span class="auth-eyebrow">@L["Your cinema account"]</span>
         </div>
         @RenderBody()
     </div>

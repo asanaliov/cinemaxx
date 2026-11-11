@@ -3,11 +3,12 @@ using CinemaWebsite.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 
 namespace CinemaWebsite.Controllers;
 
 [Authorize(Roles = "Admin")]
-public class ContactMessagesController(ApplicationDbContext context) : Controller
+public class ContactMessagesController(ApplicationDbContext context, IStringLocalizer<SharedResource> localizer) : Controller
 {
     public async Task<IActionResult> Index()
     {
@@ -35,7 +36,7 @@ public class ContactMessagesController(ApplicationDbContext context) : Controlle
         item.SentAt = DateTime.UtcNow;
         context.ContactMessages.Add(item);
         await context.SaveChangesAsync();
-        TempData["ContactSubmitted"] = "Your message has been sent.";
+        TempData["ContactSubmitted"] = localizer["Your message has been sent."].Value;
         return RedirectToAction(nameof(Create));
     }
 

@@ -1,11 +1,11 @@
 @model CinemaWebsite.Models.Reservation
-<h3>Cancel Reservation</h3>
-<p>Cancel reservation for <strong>@Model.Screening.Movie.Title</strong>?</p>
+<h3>@L["Cancel reservation"]</h3>
+<p>@L["Cancel reservation for"] <strong>@Model.Screening.Movie.Title</strong>?</p>
 <form asp-action="Cancel" method="post">
     <input type="hidden" asp-for="Id" />
     @if (ViewBag.GuestToken is string guestToken)
     {
         <input type="hidden" name="token" value="@guestToken" />
     }
-    <button class="btn btn-danger" type="submit">Cancel reservation</button>
+    <button class="btn btn-danger" type="submit">@L["Cancel reservation"]</button>
 </form>

@@ -5,14 +5,14 @@
 }
 
 <div class="page-header">
-    <h2>All Reservations</h2>
+    <h2>@L["All Reservations"]</h2>
 </div>
 
 @if (!Model.Any())
 {
     <div class="empty-state">
         <div class="empty-icon">🎟️</div>
-        <p class="text-muted">No reservations found.</p>
+        <p class="text-muted">@L["No reservations found."]</p>
     </div>
 }
 else
@@ -21,13 +21,13 @@ else
         <table class="table table-hover align-middle">
             <thead>
             <tr>
-                <th>User</th>
-                <th>Movie</th>
-                <th>Screening</th>
-                <th>Seats</th>
-                <th>Tickets</th>
-                <th class="text-end">Total</th>
-                <th>Status</th>
+                <th>@L["User"]</th>
+                <th>@L["Movie"]</th>
+                <th>@L["Screening"]</th>
+                <th>@L["Seats"]</th>
+                <th>@L["Tickets"]</th>
+                <th class="text-end">@L["Total"]</th>
+                <th>@L["Status"]</th>
             </tr>
             </thead>
             <tbody>
@@ -52,15 +52,15 @@ else
                     <td>
                         @if (r.Status == CinemaWebsite.Models.ReservationStatus.Confirmed)
                         {
-                            <span class="badge bg-success">@r.Status</span>
+                            <span class="badge bg-success">@L[r.Status.ToString()]</span>
                         }
                         else if (r.Status == CinemaWebsite.Models.ReservationStatus.Cancelled)
                         {
-                            <span class="badge bg-danger">@r.Status</span>
+                            <span class="badge bg-danger">@L[r.Status.ToString()]</span>
                         }
                         else
                         {
-                            <span class="badge bg-secondary">@r.Status</span>
+                            <span class="badge bg-secondary">@L[r.Status.ToString()]</span>
                         }
                     </td>
                 </tr>

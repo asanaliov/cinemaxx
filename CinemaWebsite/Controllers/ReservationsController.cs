@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using System.Text.RegularExpressions;
 
 namespace CinemaWebsite.Controllers;
@@ -16,7 +17,8 @@ public class ReservationsController(
     ApplicationDbContext context,
     IReservationService reservationService,
     UserManager<ApplicationUser> userManager,
-    IDataProtectionProvider dataProtectionProvider) : Controller
+    IDataProtectionProvider dataProtectionProvider,
+    IStringLocalizer<SharedResource> localizer) : Controller
 {
     private readonly ReservationGuestTokens reservationTokens = new(dataProtectionProvider);
     public async Task<IActionResult> MyReservations()
@@ -70,7 +72,7 @@ public class ReservationsController(
         if (screening is null) return NotFound();
         if (screening.StartTime <= CinemaTime.Now)
         {
-            TempData["ScreeningStartedMessage"] = "This screening has already started";
+            TempData["ScreeningStartedMessage"] = localizer["This screening has already started"].Value;
             return RedirectToAction("Details", "Movies", new { id = screening.MovieId });
         }
 
@@ -94,19 +96,19 @@ public class ReservationsController(
         if (screening is null) return NotFound();
         if (screening.StartTime <= CinemaTime.Now)
         {
-            TempData["ScreeningStartedMessage"] = "This screening has already started";
+            TempData["ScreeningStartedMessage"] = localizer["This screening has already started"].Value;
             return RedirectToAction("Details", "Movies", new { id = screening.MovieId });
         }
 
         if (selectedSeatIds is null || selectedSeatIds.Length == 0)
         {
-            ModelState.AddModelError(string.Empty, "Please select at least one seat.");
+            ModelState.AddModelError(string.Empty, localizer["Please select at least one seat."]);
         }
 
         var distinctSeatIds = selectedSeatIds?.Distinct().ToArray() ?? [];
         if (selectedSeatIds is not null && distinctSeatIds.Length != selectedSeatIds.Length)
         {
-            ModelState.AddModelError(string.Empty, "Duplicate seat selection detected. Please select seats again.");
+            ModelState.AddModelError(string.Empty, localizer["Duplicate seat selection detected. Please select seats again."]);
         }
 
         if (distinctSeatIds.Length > 0)
@@ -157,7 +159,7 @@ public class ReservationsController(
             var seatMap = await reservationService.GetSeatMapAsync(model.ScreeningId);
             ViewBag.Screening = screening;
             ViewBag.SeatMap = seatMap;
-            ModelState.AddModelError(string.Empty, result.Error);
+            ModelState.AddModelError(string.Empty, localizer[result.Error ?? ""]);
             return View(model);
         }
 
@@ -241,7 +243,7 @@ public class ReservationsController(
 
         if (reservation.Status != ReservationStatus.Pending)
         {
-            TempData["ReservationExpiredMessage"] = "Your seats were released because payment wasn't completed in time. Please select seats again.";
+            TempData["ReservationExpiredMessage"] = localizer["Your seats were released because payment wasn't completed in time. Please select seats again."].Value;
             return RedirectToAction(nameof(Create), new { screeningId = reservation.ScreeningId });
         }
 
@@ -279,12 +281,12 @@ public class ReservationsController(
 
         if (model.IsEmailRequired && string.IsNullOrWhiteSpace(model.Email))
         {
-            ModelState.AddModelError(nameof(PaymentViewModel.Email), "Email is required.");
+            ModelState.AddModelError(nameof(PaymentViewModel.Email), localizer["Email is required."]);
         }
         
         if (!IsExpirationValid(model.ExpirationDate))
         {
-            ModelState.AddModelError(nameof(model.ExpirationDate), "Card expiration date is invalid or already expired.");
+            ModelState.AddModelError(nameof(model.ExpirationDate), localizer["Card expiration date is invalid or already expired."]);
         }
         
 
@@ -297,7 +299,7 @@ public class ReservationsController(
         reservation.ReservationEmail = model.Email;
         await context.SaveChangesAsync();
 
-        TempData["PaymentSuccessMessage"] = $"Payment successful. Your ticket will arrive on mail: {model.Email}.";
+        TempData["PaymentSuccessMessage"] = localizer["Payment successful. Your ticket will arrive on mail: {0}.", model.Email].Value;
         if (string.IsNullOrWhiteSpace(userId))
         {
             var guestToken = string.IsNullOrWhiteSpace(model.AccessToken)
@@ -420,7 +422,7 @@ public class ReservationsController(
         {
             if (result.Error == "Forbidden") return Forbid();
 
-            TempData["ReservationNoticeMessage"] = result.Error;
+            TempData["ReservationNoticeMessage"] = localizer[result.Error ?? ""].Value;
             return RedirectToAction(nameof(Details), new { id, token });
         }
 

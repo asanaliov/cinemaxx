@@ -9,10 +9,10 @@
     <div class="d-flex gap-2">
         @if (User.IsInRole("Admin"))
         {
-            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-secondary btn-sm">Edit</a>
-            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger btn-sm">Delete</a>
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-secondary btn-sm">@L["Edit"]</a>
+            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger btn-sm">@L["Delete"]</a>
         }
-        <a asp-action="Index" class="btn btn-outline-secondary btn-sm">← Back</a>
+        <a asp-action="Index" class="btn btn-outline-secondary btn-sm">← @L["Back"]</a>
     </div>
 </div>
 
@@ -21,19 +21,19 @@
         <div class="card-body">
             <div class="row g-3">
                 <div class="col-sm-6">
-                    <div class="text-muted small">Hall Number</div>
+                    <div class="text-muted small">@L["Hall Number"]</div>
                     <div class="fw-semibold">@Model.Number</div>
                 </div>
                 <div class="col-sm-6">
-                    <div class="text-muted small">Capacity</div>
-                    <div class="fw-semibold">@Model.Capacity seats</div>
+                    <div class="text-muted small">@L["Capacity"]</div>
+                    <div class="fw-semibold">@L["{0} seats", Model.Capacity]</div>
                 </div>
                 <div class="col-sm-6">
-                    <div class="text-muted small">Type</div>
+                    <div class="text-muted small">@L["Type"]</div>
                     <div class="fw-semibold"><span class="badge bg-secondary">@Model.HallType</span></div>
                 </div>
                 <div class="col-sm-6">
-                    <div class="text-muted small">Available</div>
+                    <div class="text-muted small">@L["Available"]</div>
                     <div class="fw-semibold @(Model.IsAvailable ? "text-success" : "text-muted")">
                         @(Model.IsAvailable ? "Yes" : "No")
                     </div>

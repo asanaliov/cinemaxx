@@ -4,11 +4,12 @@ using CinemaWebsite.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 
 namespace CinemaWebsite.Controllers;
 
 [Authorize(Roles = "Admin")]
-public class MoviesController(ApplicationDbContext context) : Controller {
+public class MoviesController(ApplicationDbContext context, IStringLocalizer<SharedResource> localizer) : Controller {
     [AllowAnonymous]
     public async Task<IActionResult> Index(string? search, int? genreId, string? status, string? language,
         string? day) {
@@ -110,7 +111,7 @@ public class MoviesController(ApplicationDbContext context) : Controller {
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(Movie movie, int[] selectedGenreIds) {
         if (selectedGenreIds.Length == 0) {
-            ModelState.AddModelError("selectedGenreIds", "Please select at least one genre");
+            ModelState.AddModelError("selectedGenreIds", localizer["Please select at least one genre"]);
         }
 
         if (!ModelState.IsValid) {
@@ -161,7 +162,7 @@ public class MoviesController(ApplicationDbContext context) : Controller {
         if (id != movie.Id) return BadRequest();
 
         if (selectedGenreIds.Length == 0) {
-            ModelState.AddModelError("selectedGenreIds", "Please select at least one genre.");
+            ModelState.AddModelError("selectedGenreIds", localizer["Please select at least one genre."]);
         }
 
         if (!ModelState.IsValid) {

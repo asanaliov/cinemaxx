@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="(Sub: {0})" xml:space="preserve"><value>(Титл: {0})</value></data>
+  <data name="A value for the '{0}' parameter or property was not provided." xml:space="preserve"><value>Не е внесена вредност за „{0}“.</value></data>
+  <data name="Accept all" xml:space="preserve"><value>Прифати ги сите</value></data>
+  <data name="Account" xml:space="preserve"><value>Сметка</value></data>
+  <data name="Account settings" xml:space="preserve"><value>Поставки на сметката</value></data>
+  <data name="Add employee" xml:space="preserve"><value>Додај вработен</value></data>
+  <data name="Admin Dashboard" xml:space="preserve"><value>Администраторска табла</value></data>
+  <data name="Admin Tools" xml:space="preserve"><value>Администрација</value></data>
+  <data name="Age Rating" xml:space="preserve"><value>Возрасна категорија</value></data>
+  <data name="AgeRating" xml:space="preserve"><value>Возрасна категорија</value></data>
+  <data name="All genres" xml:space="preserve"><value>Сите жанрови</value></data>
+  <data name="All news" xml:space="preserve"><value>Сите вести</value></data>
+  <data name="All Reservations" xml:space="preserve"><value>Сите резервации</value></data>
+  <data name="All rights reserved." xml:space="preserve"><value>Сите права се задржани.</value></data>
+  <data name="Already have an account? Log in" xml:space="preserve"><value>Веќе имате сметка? Најавете се</value></data>
+  <data name="An error occurred while processing your request." xml:space="preserve"><value>Настана грешка при обработката на вашето барање.</value></data>
+  <data name="Any day" xml:space="preserve"><value>Било кој ден</value></data>
+  <data name="Author" xml:space="preserve"><value>Автор</value></data>
+  <data name="Available" xml:space="preserve"><value>Достапно</value></data>
+  <data name="Awaiting payment" xml:space="preserve"><value>Се чека плаќање</value></data>
+  <data name="Back" xml:space="preserve"><value>Назад</value></data>
+  <data name="Back to login" xml:space="preserve"><value>Назад кон најава</value></data>
+  <data name="Back to Movies" xml:space="preserve"><value>Назад кон филмовите</value></data>
+  <data name="Billing Address" xml:space="preserve"><value>Адреса за наплата</value></data>
+  <data name="BillingAddress" xml:space="preserve"><value>Адреса за наплата</value></data>
+  <data name="Book Tickets" xml:space="preserve"><value>Резервирај билети</value></data>
+  <data name="Browse all" xml:space="preserve"><value>Види ги сите</value></data>
+  <data name="Browse movies" xml:space="preserve"><value>Разгледај филмови</value></data>
+  <data name="by {0}" xml:space="preserve"><value>од {0}</value></data>
+  <data name="Cancel" xml:space="preserve"><value>Откажи</value></data>
+  <data name="Cancel reservation" xml:space="preserve"><value>Откажи резервација</value></data>
+  <data name="Cancel reservation for" xml:space="preserve"><value>Да се откаже резервацијата за</value></data>
+  <data name="Cancelled" xml:space="preserve"><value>Откажана</value></data>
+  <data name="Cannot create screening because there are no movies or no available halls." xml:space="preserve"><value>Не може да се создаде проекција бидејќи нема филмови или достапни сали.</value></data>
+  <data name="Cannot delete hall with existing screenings." xml:space="preserve"><value>Не може да се избрише сала што има проекции.</value></data>
+  <data name="Cannot delete screening with active reservations." xml:space="preserve"><value>Не може да се избрише проекција со активни резервации.</value></data>
+  <data name="Cannot reserve tickets for past screenings." xml:space="preserve"><value>Не може да се резервираат билети за поминати проекции.</value></data>
+  <data name="Capacity" xml:space="preserve"><value>Капацитет</value></data>
+  <data name="Card expiration date is invalid or already expired." xml:space="preserve"><value>Датумот на истекување на картичката е невалиден или веќе поминал.</value></data>
+  <data name="Card Number" xml:space="preserve"><value>Број на картичка</value></data>
+  <data name="Card number must be 16 digits." xml:space="preserve"><value>Бројот на картичката мора да има 16 цифри.</value></data>
+  <data name="Cardholder Name" xml:space="preserve"><value>Име на сопственикот</value></data>
+  <data name="CardholderName" xml:space="preserve"><value>Име на сопственикот</value></data>
+  <data name="CardNumber" xml:space="preserve"><value>Број на картичка</value></data>
+  <data name="Cast" xml:space="preserve"><value>Улоги</value></data>
+  <data name="Check your email" xml:space="preserve"><value>Проверете ја е-поштата</value></data>
+  <data name="Cinema Hall" xml:space="preserve"><value>Кино сала</value></data>
+  <data name="Cinema Halls" xml:space="preserve"><value>Кино сали</value></data>
+  <data name="CinemaHall" xml:space="preserve"><value>Кино сала</value></data>
+  <data name="CinemaHallId" xml:space="preserve"><value>Кино сала</value></data>
+  <data name="Cinemaxx home" xml:space="preserve"><value>Cinemaxx почетна</value></data>
+  <data name="Cinemaxx: see what's playing, pick your seats and book tickets online." xml:space="preserve"><value>Cinemaxx: погледнете што се прикажува, изберете седишта и купете билети онлајн.</value></data>
+  <data name="Clear filters" xml:space="preserve"><value>Исчисти филтри</value></data>
+  <data name="Click here to confirm your account" xml:space="preserve"><value>Кликнете тука за да ја потврдите сметката</value></data>
+  <data name="Coming soon" xml:space="preserve"><value>Наскоро</value></data>
+  <data name="Complete payment to finalize your reservation." xml:space="preserve"><value>Завршете го плаќањето за да ја потврдите резервацијата.</value></data>
+  <data name="Complete your payment" xml:space="preserve"><value>Завршете го плаќањето</value></data>
+  <data name="Confirm and pay" xml:space="preserve"><value>Потврди и плати</value></data>
+  <data name="Confirm deletion" xml:space="preserve"><value>Потврди бришење</value></data>
+  <data name="Confirm password" xml:space="preserve"><value>Потврди лозинка</value></data>
+  <data name="Confirm your account" xml:space="preserve"><value>Потврдете ја сметката</value></data>
+  <data name="Confirmed" xml:space="preserve"><value>Потврдена</value></data>
+  <data name="ConfirmPassword" xml:space="preserve"><value>Потврди лозинка</value></data>
+  <data name="Contact" xml:space="preserve"><value>Контакт</value></data>
+  <data name="Contact Messages" xml:space="preserve"><value>Пораки</value></data>
+  <data name="Contact us" xml:space="preserve"><value>Контактирајте не</value></data>
+  <data name="Content" xml:space="preserve"><value>Содржина</value></data>
+  <data name="Continue to Payment" xml:space="preserve"><value>Продолжи кон плаќање</value></data>
+  <data name="Couple (selected together)" xml:space="preserve"><value>За парови (се избираат заедно)</value></data>
+  <data name="couple seat" xml:space="preserve"><value>седиште за парови</value></data>
+  <data name="Create a new account." xml:space="preserve"><value>Отворете нова сметка.</value></data>
+  <data name="Create account" xml:space="preserve"><value>Отвори сметка</value></data>
+  <data name="Create an account" xml:space="preserve"><value>Отворете сметка</value></data>
+  <data name="Create article" xml:space="preserve"><value>Нова вест</value></data>
+  <data name="Create genre" xml:space="preserve"><value>Нов жанр</value></data>
+  <data name="Create hall" xml:space="preserve"><value>Нова сала</value></data>
+  <data name="Create Movie" xml:space="preserve"><value>Нов филм</value></data>
+  <data name="Create screening" xml:space="preserve"><value>Нова проекција</value></data>
+  <data name="Create service" xml:space="preserve"><value>Нова услуга</value></data>
+  <data name="CustomerEmail" xml:space="preserve"><value>Е-пошта</value></data>
+  <data name="CVV must be 3 or 4 digits." xml:space="preserve"><value>CVV мора да има 3 или 4 цифри.</value></data>
+  <data name="Dashboard" xml:space="preserve"><value>Табла</value></data>
+  <data name="Date" xml:space="preserve"><value>Датум</value></data>
+  <data name="Date &amp; Time" xml:space="preserve"><value>Датум и време</value></data>
+  <data name="Day" xml:space="preserve"><value>Ден</value></data>
+  <data name="Delete" xml:space="preserve"><value>Избриши</value></data>
+  <data name="Delete Article" xml:space="preserve"><value>Избриши вест</value></data>
+  <data name="Delete Employee" xml:space="preserve"><value>Избриши вработен</value></data>
+  <data name="Delete Genre" xml:space="preserve"><value>Избриши жанр</value></data>
+  <data name="Delete Hall" xml:space="preserve"><value>Избриши сала</value></data>
+  <data name="Delete Message" xml:space="preserve"><value>Избриши порака</value></data>
+  <data name="Delete message from" xml:space="preserve"><value>Да се избрише пораката од</value></data>
+  <data name="Delete Movie" xml:space="preserve"><value>Избриши филм</value></data>
+  <data name="Delete Screening" xml:space="preserve"><value>Избриши проекција</value></data>
+  <data name="Delete screening for" xml:space="preserve"><value>Да се избрише проекцијата за</value></data>
+  <data name="Delete Service" xml:space="preserve"><value>Избриши услуга</value></data>
+  <data name="Description" xml:space="preserve"><value>Опис</value></data>
+  <data name="Details" xml:space="preserve"><value>Детали</value></data>
+  <data name="Director" xml:space="preserve"><value>Режисер</value></data>
+  <data name="Draft" xml:space="preserve"><value>Нацрт</value></data>
+  <data name="Duplicate seat selection detected. Please select seats again." xml:space="preserve"><value>Исто седиште е избрано двапати. Изберете ги седиштата повторно.</value></data>
+  <data name="Duration" xml:space="preserve"><value>Времетраење</value></data>
+  <data name="Edit" xml:space="preserve"><value>Уреди</value></data>
+  <data name="Edit Article" xml:space="preserve"><value>Уреди вест</value></data>
+  <data name="Edit Employee" xml:space="preserve"><value>Уреди вработен</value></data>
+  <data name="Edit Genre" xml:space="preserve"><value>Уреди жанр</value></data>
+  <data name="Edit Hall" xml:space="preserve"><value>Уреди сала</value></data>
+  <data name="Edit Movie" xml:space="preserve"><value>Уреди филм</value></data>
+  <data name="Edit Screening" xml:space="preserve"><value>Уреди проекција</value></data>
+  <data name="Edit Service" xml:space="preserve"><value>Уреди услуга</value></data>
+  <data name="Email" xml:space="preserve"><value>Е-пошта</value></data>
+  <data name="Email is required." xml:space="preserve"><value>Е-поштата е задолжителна.</value></data>
+  <data name="Employees" xml:space="preserve"><value>Вработени</value></data>
+  <data name="End time is calculated automatically from start time + movie duration." xml:space="preserve"><value>Времето на завршување се пресметува автоматски од почетокот + времетраењето на филмот.</value></data>
+  <data name="End time must be after start time." xml:space="preserve"><value>Времето на завршување мора да биде по почетокот.</value></data>
+  <data name="EndTime" xml:space="preserve"><value>Крај</value></data>
+  <data name="Enter your account email to request a password reset link." xml:space="preserve"><value>Внесете ја е-поштата на сметката за да добиете линк за нова лозинка.</value></data>
+  <data name="Error" xml:space="preserve"><value>Грешка</value></data>
+  <data name="Error." xml:space="preserve"><value>Грешка.</value></data>
+  <data name="Expiration Date (MM/YY)" xml:space="preserve"><value>Датум на истекување (ММ/ГГ)</value></data>
+  <data name="ExpirationDate" xml:space="preserve"><value>Датум на истекување</value></data>
+  <data name="Expired" xml:space="preserve"><value>Истечена</value></data>
+  <data name="Explore" xml:space="preserve"><value>Истражи</value></data>
+  <data name="Failed to create reservation." xml:space="preserve"><value>Резервацијата не можеше да се создаде.</value></data>
+  <data name="Filter" xml:space="preserve"><value>Филтрирај</value></data>
+  <data name="FirstName" xml:space="preserve"><value>Име</value></data>
+  <data name="for details." xml:space="preserve"><value>за детали.</value></data>
+  <data name="For your privacy, guest booking links are available until 24 hours after the screening starts." xml:space="preserve"><value>Заради вашата приватност, линковите за резервации на гости важат до 24 часа по почетокот на проекцијата.</value></data>
+  <data name="Forgot password confirmation" xml:space="preserve"><value>Заборавена лозинка</value></data>
+  <data name="Forgot your password?" xml:space="preserve"><value>Ја заборавивте лозинката?</value></data>
+  <data name="From" xml:space="preserve"><value>Од</value></data>
+  <data name="Genre" xml:space="preserve"><value>Жанр</value></data>
+  <data name="GenreId" xml:space="preserve"><value>Жанр</value></data>
+  <data name="Genres" xml:space="preserve"><value>Жанрови</value></data>
+  <data name="Get Tickets" xml:space="preserve"><value>Купи билети</value></data>
+  <data name="Hall" xml:space="preserve"><value>Сала</value></data>
+  <data name="Hall #{0}" xml:space="preserve"><value>Сала бр. {0}</value></data>
+  <data name="Hall Number" xml:space="preserve"><value>Број на сала</value></data>
+  <data name="HallName" xml:space="preserve"><value>Сала</value></data>
+  <data name="HallType" xml:space="preserve"><value>Тип на сала</value></data>
+  <data name="Home" xml:space="preserve"><value>Почетна</value></data>
+  <data name="Identity.DuplicateEmail" xml:space="preserve"><value>Е-поштата „{0}“ веќе се користи.</value></data>
+  <data name="Identity.DuplicateUserName" xml:space="preserve"><value>Корисничкото име „{0}“ веќе се користи.</value></data>
+  <data name="Identity.InvalidEmail" xml:space="preserve"><value>Е-поштата „{0}“ не е валидна.</value></data>
+  <data name="Identity.InvalidUserName" xml:space="preserve"><value>Корисничкото име „{0}“ не е валидно.</value></data>
+  <data name="Identity.PasswordRequiresDigit" xml:space="preserve"><value>Лозинката мора да содржи барем една цифра ('0'-'9').</value></data>
+  <data name="Identity.PasswordRequiresLower" xml:space="preserve"><value>Лозинката мора да содржи барем една мала буква ('a'-'z').</value></data>
+  <data name="Identity.PasswordRequiresNonAlphanumeric" xml:space="preserve"><value>Лозинката мора да содржи барем еден специјален знак.</value></data>
+  <data name="Identity.PasswordRequiresUniqueChars" xml:space="preserve"><value>Лозинката мора да содржи повеќе различни знаци.</value></data>
+  <data name="Identity.PasswordRequiresUpper" xml:space="preserve"><value>Лозинката мора да содржи барем една голема буква ('A'-'Z').</value></data>
+  <data name="Identity.PasswordTooShort" xml:space="preserve"><value>Лозинката мора да има најмалку 6 знаци.</value></data>
+  <data name="If you still need help with your booking, please contact us." xml:space="preserve"><value>Ако ви треба помош со резервацијата, контактирајте не.</value></data>
+  <data name="ImageUrl" xml:space="preserve"><value>URL на слика</value></data>
+  <data name="in" xml:space="preserve"><value>во</value></data>
+  <data name="Inbox" xml:space="preserve"><value>Пораки</value></data>
+  <data name="Invalid login attempt." xml:space="preserve"><value>Неуспешна најава.</value></data>
+  <data name="IsAvailable" xml:space="preserve"><value>Достапно</value></data>
+  <data name="IsPublished" xml:space="preserve"><value>Објавено</value></data>
+  <data name="IsRead" xml:space="preserve"><value>Прочитано</value></data>
+  <data name="Language" xml:space="preserve"><value>Јазик</value></data>
+  <data name="LastName" xml:space="preserve"><value>Презиме</value></data>
+  <data name="Latest News" xml:space="preserve"><value>Најнови вести</value></data>
+  <data name="Log in" xml:space="preserve"><value>Најава</value></data>
+  <data name="Log in to your cinema account." xml:space="preserve"><value>Најавете се на вашата сметка.</value></data>
+  <data name="Log out" xml:space="preserve"><value>Одјава</value></data>
+  <data name="Manage Screenings" xml:space="preserve"><value>Управувај со проекции</value></data>
+  <data name="Manage your account" xml:space="preserve"><value>Управувајте со сметката</value></data>
+  <data name="Mark as read" xml:space="preserve"><value>Означи како прочитано</value></data>
+  <data name="Message" xml:space="preserve"><value>Порака</value></data>
+  <data name="minutes" xml:space="preserve"><value>минути</value></data>
+  <data name="MM/YY" xml:space="preserve"><value>ММ/ГГ</value></data>
+  <data name="Movie" xml:space="preserve"><value>Филм</value></data>
+  <data name="MovieId" xml:space="preserve"><value>Филм</value></data>
+  <data name="Movies" xml:space="preserve"><value>Филмови</value></data>
+  <data name="Movies &amp; Screenings" xml:space="preserve"><value>Филмови и проекции</value></data>
+  <data name="MovieTitle" xml:space="preserve"><value>Филм</value></data>
+  <data name="My reservations" xml:space="preserve"><value>Мои резервации</value></data>
+  <data name="Name" xml:space="preserve"><value>Име</value></data>
+  <data name="Necessary only" xml:space="preserve"><value>Само неопходни</value></data>
+  <data name="New releases and old favourites on a proper big screen. Check showtimes, choose your seats and book in a couple of minutes." xml:space="preserve"><value>Нови наслови и стари омилени филмови на вистинско големо платно. Проверете ги термините, изберете седишта и резервирајте за неколку минути.</value></data>
+  <data name="News" xml:space="preserve"><value>Вести</value></data>
+  <data name="No" xml:space="preserve"><value>Не</value></data>
+  <data name="No cinema halls found." xml:space="preserve"><value>Нема кино сали.</value></data>
+  <data name="No description provided." xml:space="preserve"><value>Нема опис.</value></data>
+  <data name="No employees found." xml:space="preserve"><value>Нема вработени.</value></data>
+  <data name="No genres found." xml:space="preserve"><value>Нема жанрови.</value></data>
+  <data name="No movies found" xml:space="preserve"><value>Нема пронајдени филмови</value></data>
+  <data name="No movies in this genre yet." xml:space="preserve"><value>Сè уште нема филмови во овој жанр.</value></data>
+  <data name="No news articles yet." xml:space="preserve"><value>Сè уште нема вести.</value></data>
+  <data name="No reservations found." xml:space="preserve"><value>Нема резервации.</value></data>
+  <data name="No Screenings Available" xml:space="preserve"><value>Нема достапни проекции</value></data>
+  <data name="No screenings found." xml:space="preserve"><value>Нема проекции.</value></data>
+  <data name="No seats assigned" xml:space="preserve"><value>Нема доделени седишта</value></data>
+  <data name="No seats selected." xml:space="preserve"><value>Не се избрани седишта.</value></data>
+  <data name="No services found." xml:space="preserve"><value>Нема услуги.</value></data>
+  <data name="No trailer available" xml:space="preserve"><value>Нема достапен трејлер</value></data>
+  <data name="Not enough available seats." xml:space="preserve"><value>Нема доволно слободни седишта.</value></data>
+  <data name="Not provided" xml:space="preserve"><value>Не е наведено</value></data>
+  <data name="Now showing" xml:space="preserve"><value>Во кино</value></data>
+  <data name="Now showing at Cinemaxx" xml:space="preserve"><value>Сега во Cinemaxx</value></data>
+  <data name="Number" xml:space="preserve"><value>Број</value></data>
+  <data name="Number of Tickets" xml:space="preserve"><value>Број на билети</value></data>
+  <data name="NumberOfTickets" xml:space="preserve"><value>Број на билети</value></data>
+  <data name="One or more selected seats are already reserved." xml:space="preserve"><value>Едно или повеќе од избраните седишта се веќе резервирани.</value></data>
+  <data name="One or more selected seats do not belong to the screening hall." xml:space="preserve"><value>Едно или повеќе од избраните седишта не припаѓаат на салата.</value></data>
+  <data name="One or more selected seats do not exist." xml:space="preserve"><value>Едно или повеќе од избраните седишта не постојат.</value></data>
+  <data name="Our Services" xml:space="preserve"><value>Наши услуги</value></data>
+  <data name="Paid" xml:space="preserve"><value>Платено</value></data>
+  <data name="Password" xml:space="preserve"><value>Лозинка</value></data>
+  <data name="Payment" xml:space="preserve"><value>Плаќање</value></data>
+  <data name="Payment successful. Your ticket will arrive on mail: {0}." xml:space="preserve"><value>Плаќањето е успешно. Билетот ќе ви стигне на е-пошта: {0}.</value></data>
+  <data name="Pending" xml:space="preserve"><value>Во тек</value></data>
+  <data name="Pending payment" xml:space="preserve"><value>Се чека плаќање</value></data>
+  <data name="Phone" xml:space="preserve"><value>Телефон</value></data>
+  <data name="PhotoUrl" xml:space="preserve"><value>URL на фотографија</value></data>
+  <data name="Please check your email to confirm your account." xml:space="preserve"><value>Проверете ја е-поштата за да ја потврдите сметката.</value></data>
+  <data name="Please check your email to reset your password." xml:space="preserve"><value>Проверете ја е-поштата за да поставите нова лозинка.</value></data>
+  <data name="Please select at least one genre" xml:space="preserve"><value>Изберете барем еден жанр</value></data>
+  <data name="Please select at least one genre." xml:space="preserve"><value>Изберете барем еден жанр.</value></data>
+  <data name="Please select at least one seat." xml:space="preserve"><value>Изберете барем едно седиште.</value></data>
+  <data name="Position" xml:space="preserve"><value>Позиција</value></data>
+  <data name="PosterUrl" xml:space="preserve"><value>URL на постер</value></data>
+  <data name="Price" xml:space="preserve"><value>Цена</value></data>
+  <data name="Price must be greater than zero." xml:space="preserve"><value>Цената мора да биде поголема од нула.</value></data>
+  <data name="Price per seat" xml:space="preserve"><value>Цена по седиште</value></data>
+  <data name="Privacy Policy" xml:space="preserve"><value>Политика за приватност</value></data>
+  <data name="Published" xml:space="preserve"><value>Објавено</value></data>
+  <data name="Published News" xml:space="preserve"><value>Објавени вести</value></data>
+  <data name="PublishedDate" xml:space="preserve"><value>Датум на објава</value></data>
+  <data name="Rating" xml:space="preserve"><value>Оцена</value></data>
+  <data name="Read" xml:space="preserve"><value>Прочитано</value></data>
+  <data name="Register" xml:space="preserve"><value>Регистрација</value></data>
+  <data name="Register confirmation" xml:space="preserve"><value>Потврда на регистрација</value></data>
+  <data name="Release" xml:space="preserve"><value>Премиера</value></data>
+  <data name="ReleaseDate" xml:space="preserve"><value>Датум на премиера</value></data>
+  <data name="Remember me?" xml:space="preserve"><value>Запамети ме?</value></data>
+  <data name="RememberMe" xml:space="preserve"><value>Запамети ме</value></data>
+  <data name="Request ID:" xml:space="preserve"><value>ID на барањето:</value></data>
+  <data name="Resend email confirmation" xml:space="preserve"><value>Повторно испрати потврда</value></data>
+  <data name="Reservation" xml:space="preserve"><value>Резервација</value></data>
+  <data name="Reservation cancelled" xml:space="preserve"><value>Резервацијата е откажана</value></data>
+  <data name="Reservation confirmed!" xml:space="preserve"><value>Резервацијата е потврдена!</value></data>
+  <data name="Reservation Details" xml:space="preserve"><value>Детали за резервацијата</value></data>
+  <data name="Reservation is already cancelled." xml:space="preserve"><value>Резервацијата е веќе откажана.</value></data>
+  <data name="Reservation link expired" xml:space="preserve"><value>Линкот за резервација истече</value></data>
+  <data name="Reservation Policy" xml:space="preserve"><value>Правила за резервација</value></data>
+  <data name="Reservation summary" xml:space="preserve"><value>Преглед на резервацијата</value></data>
+  <data name="Reservations" xml:space="preserve"><value>Резервации</value></data>
+  <data name="Reserve Tickets" xml:space="preserve"><value>Резервирај билети</value></data>
+  <data name="Reserved" xml:space="preserve"><value>Зафатено</value></data>
+  <data name="Reset Password" xml:space="preserve"><value>Нова лозинка</value></data>
+  <data name="Row" xml:space="preserve"><value>Ред</value></data>
+  <data name="Row {0}, Seat {1}" xml:space="preserve"><value>Ред {0}, седиште {1}</value></data>
+  <data name="Save" xml:space="preserve"><value>Зачувај</value></data>
+  <data name="SCREEN" xml:space="preserve"><value>ПЛАТНО</value></data>
+  <data name="Screening" xml:space="preserve"><value>Проекција</value></data>
+  <data name="Screening information is unavailable. Please return and try again." xml:space="preserve"><value>Информациите за проекцијата не се достапни. Вратете се и обидете се повторно.</value></data>
+  <data name="Screening not found." xml:space="preserve"><value>Проекцијата не е пронајдена.</value></data>
+  <data name="Screening overlaps with another screening in this hall." xml:space="preserve"><value>Проекцијата се преклопува со друга проекција во оваа сала.</value></data>
+  <data name="ScreeningId" xml:space="preserve"><value>Проекција</value></data>
+  <data name="Screenings" xml:space="preserve"><value>Проекции</value></data>
+  <data name="ScreeningStartTime" xml:space="preserve"><value>Почеток на проекцијата</value></data>
+  <data name="Search movies" xml:space="preserve"><value>Пребарај филмови</value></data>
+  <data name="Seat" xml:space="preserve"><value>Седиште</value></data>
+  <data name="Seat map" xml:space="preserve"><value>Распоред на седишта</value></data>
+  <data name="Seat {0}" xml:space="preserve"><value>Седиште {0}</value></data>
+  <data name="Seats" xml:space="preserve"><value>Седишта</value></data>
+  <data name="See schedule" xml:space="preserve"><value>Види распоред</value></data>
+  <data name="See what's playing, pick your seats and book in under a minute." xml:space="preserve"><value>Погледнете што се прикажува, изберете седишта и резервирајте за помалку од минута.</value></data>
+  <data name="Select a showtime below." xml:space="preserve"><value>Изберете термин подолу.</value></data>
+  <data name="Select Your Seats" xml:space="preserve"><value>Изберете седишта</value></data>
+  <data name="Selected" xml:space="preserve"><value>Избрано</value></data>
+  <data name="Selected account setting" xml:space="preserve"><value>Избрана поставка</value></data>
+  <data name="Selected hall does not exist." xml:space="preserve"><value>Избраната сала не постои.</value></data>
+  <data name="Selected hall is not available." xml:space="preserve"><value>Избраната сала не е достапна.</value></data>
+  <data name="Selected movie does not exist." xml:space="preserve"><value>Избраниот филм не постои.</value></data>
+  <data name="Selected movie has invalid duration." xml:space="preserve"><value>Избраниот филм има невалидно времетраење.</value></data>
+  <data name="selects both seats" xml:space="preserve"><value>ги избира двете седишта</value></data>
+  <data name="Send" xml:space="preserve"><value>Испрати</value></data>
+  <data name="SentAt" xml:space="preserve"><value>Испратено</value></data>
+  <data name="Services" xml:space="preserve"><value>Услуги</value></data>
+  <data name="Showing available times for" xml:space="preserve"><value>Достапни термини за</value></data>
+  <data name="Sign up" xml:space="preserve"><value>Регистрација</value></data>
+  <data name="Skip to content" xml:space="preserve"><value>Прескокни до содржината</value></data>
+  <data name="Start Time" xml:space="preserve"><value>Почеток</value></data>
+  <data name="Start Time (Skopje time)" xml:space="preserve"><value>Почеток (време во Скопје)</value></data>
+  <data name="StartTime" xml:space="preserve"><value>Почеток</value></data>
+  <data name="Status" xml:space="preserve"><value>Статус</value></data>
+  <data name="Subject" xml:space="preserve"><value>Тема</value></data>
+  <data name="Subtitle Language" xml:space="preserve"><value>Јазик на титлот</value></data>
+  <data name="SubtitleLanguage" xml:space="preserve"><value>Јазик на титлот</value></data>
+  <data name="Summary" xml:space="preserve"><value>Краток опис</value></data>
+  <data name="Support" xml:space="preserve"><value>Поддршка</value></data>
+  <data name="System &amp; Content" xml:space="preserve"><value>Систем и содржина</value></data>
+  <data name="The field {0} must be a number." xml:space="preserve"><value>Полето {0} мора да биде број.</value></data>
+  <data name="The password and confirmation password do not match." xml:space="preserve"><value>Лозинката и потврдата не се совпаѓаат.</value></data>
+  <data name="The payment window closed and the seats have been released." xml:space="preserve"><value>Времето за плаќање истече и седиштата се ослободени.</value></data>
+  <data name="The value '{0}' is invalid." xml:space="preserve"><value>Вредноста „{0}“ не е валидна.</value></data>
+  <data name="The value '{0}' is not valid for {1}." xml:space="preserve"><value>Вредноста „{0}“ не е валидна за {1}.</value></data>
+  <data name="The {0} field is not a valid email address." xml:space="preserve"><value>Полето {0} не е валидна е-пошта.</value></data>
+  <data name="The {0} field is not a valid phone number." xml:space="preserve"><value>Полето {0} не е валиден телефонски број.</value></data>
+  <data name="The {0} field is not a valid URL." xml:space="preserve"><value>Полето {0} не е валиден URL.</value></data>
+  <data name="The {0} field is not in the correct format." xml:space="preserve"><value>Полето {0} не е во точен формат.</value></data>
+  <data name="The {0} field is required." xml:space="preserve"><value>Полето {0} е задолжително.</value></data>
+  <data name="The {0} must be at least {2} and at max {1} characters long." xml:space="preserve"><value>{0} мора да има најмалку {2} и најмногу {1} знаци.</value></data>
+  <data name="The {0} must be at most {1} characters long." xml:space="preserve"><value>{0} може да има најмногу {1} знаци.</value></data>
+  <data name="The {0} must be between {1} and {2}." xml:space="preserve"><value>{0} мора да биде помеѓу {1} и {2}.</value></data>
+  <data name="The {0} must be between {2} and {1} characters long." xml:space="preserve"><value>{0} мора да има помеѓу {2} и {1} знаци.</value></data>
+  <data name="There are currently no upcoming showtimes scheduled for this movie." xml:space="preserve"><value>Моментално нема закажани термини за овој филм.</value></data>
+  <data name="This action cannot be undone." xml:space="preserve"><value>Ова не може да се врати.</value></data>
+  <data name="This booking is no longer valid and the seats have been released." xml:space="preserve"><value>Оваа резервација повеќе не важи и седиштата се ослободени.</value></data>
+  <data name="This link has expired" xml:space="preserve"><value>Овој линк истече</value></data>
+  <data name="This reservation expired" xml:space="preserve"><value>Резервацијата истече</value></data>
+  <data name="This screening has already started" xml:space="preserve"><value>Оваа проекција веќе започна</value></data>
+  <data name="Ticket count must be greater than zero." xml:space="preserve"><value>Бројот на билети мора да биде поголем од нула.</value></data>
+  <data name="Tickets" xml:space="preserve"><value>Билети</value></data>
+  <data name="Time" xml:space="preserve"><value>Време</value></data>
+  <data name="Title" xml:space="preserve"><value>Наслов</value></data>
+  <data name="To create a screening, add at least one movie and one available hall first." xml:space="preserve"><value>За да создадете проекција, прво додајте барем еден филм и една достапна сала.</value></data>
+  <data name="Toggle navigation" xml:space="preserve"><value>Мени</value></data>
+  <data name="Total" xml:space="preserve"><value>Вкупно</value></data>
+  <data name="Total Movies" xml:space="preserve"><value>Вкупно филмови</value></data>
+  <data name="TotalPrice" xml:space="preserve"><value>Вкупна цена</value></data>
+  <data name="Trailer" xml:space="preserve"><value>Трејлер</value></data>
+  <data name="TrailerUrl" xml:space="preserve"><value>URL на трејлер</value></data>
+  <data name="Try adjusting your filters or search query." xml:space="preserve"><value>Обидете се со други филтри или пребарување.</value></data>
+  <data name="Type" xml:space="preserve"><value>Тип</value></data>
+  <data name="Unread Messages" xml:space="preserve"><value>Непрочитани пораки</value></data>
+  <data name="Update your profile, email and security settings." xml:space="preserve"><value>Ажурирајте го профилот, е-поштата и безбедносните поставки.</value></data>
+  <data name="Use MM/YY format." xml:space="preserve"><value>Користете формат ММ/ГГ.</value></data>
+  <data name="User" xml:space="preserve"><value>Корисник</value></data>
+  <data name="Using your account email." xml:space="preserve"><value>Се користи е-поштата од вашата сметка.</value></data>
+  <data name="View all" xml:space="preserve"><value>Види ги сите</value></data>
+  <data name="Watch Trailer on YouTube" xml:space="preserve"><value>Гледај го трејлерот на YouTube</value></data>
+  <data name="We use cookies to keep you signed in and hold your seat selection. See our" xml:space="preserve"><value>Користиме колачиња за да останете најавени и да ги задржиме избраните седишта. Погледнете ја нашата</value></data>
+  <data name="Welcome back." xml:space="preserve"><value>Добредојдовте назад.</value></data>
+  <data name="Yes" xml:space="preserve"><value>Да</value></data>
+  <data name="You are about to permanently delete" xml:space="preserve"><value>Трајно ќе избришете</value></data>
+  <data name="You are about to permanently delete the article" xml:space="preserve"><value>Трајно ќе ја избришете веста</value></data>
+  <data name="You are about to permanently delete the employee" xml:space="preserve"><value>Трајно ќе го избришете вработениот</value></data>
+  <data name="You are about to permanently delete the genre" xml:space="preserve"><value>Трајно ќе го избришете жанрот</value></data>
+  <data name="You are about to permanently delete the hall" xml:space="preserve"><value>Трајно ќе ја избришете салата</value></data>
+  <data name="You are about to permanently delete the service" xml:space="preserve"><value>Трајно ќе ја избришете услугата</value></data>
+  <data name="You haven't made any reservations yet." xml:space="preserve"><value>Сè уште немате резервации.</value></data>
+  <data name="Your account" xml:space="preserve"><value>Вашата сметка</value></data>
+  <data name="Your booking details are ready." xml:space="preserve"><value>Деталите за резервацијата се подготвени.</value></data>
+  <data name="Your cinema account" xml:space="preserve"><value>Вашата сметка</value></data>
+  <data name="Your message has been sent." xml:space="preserve"><value>Вашата порака е испратена.</value></data>
+  <data name="Your next movie night starts here." xml:space="preserve"><value>Вашата следна филмска вечер почнува тука.</value></data>
+  <data name="Your seats are being held — finish payment before the hold expires." xml:space="preserve"><value>Седиштата се задржани — завршете го плаќањето пред да истече времето.</value></data>
+  <data name="Your seats are held for" xml:space="preserve"><value>Седиштата се задржани уште</value></data>
+  <data name="Your seats were released because payment wasn't completed in time. Please select seats again." xml:space="preserve"><value>Седиштата се ослободени бидејќи плаќањето не беше завршено навреме. Изберете ги седиштата повторно.</value></data>
+  <data name="Your selected seats will be held for exactly 10 minutes. Please complete payment promptly." xml:space="preserve"><value>Избраните седишта ќе бидат задржани точно 10 минути. Завршете го плаќањето навреме.</value></data>
+  <data name="YouTube URL" xml:space="preserve"><value>YouTube линк</value></data>
+  <data name="{0} min" xml:space="preserve"><value>{0} мин</value></data>
+  <data name="{0} movie(s)" xml:space="preserve"><value>{0} филм(ови)</value></data>
+  <data name="{0} poster" xml:space="preserve"><value>Постер за {0}</value></data>
+  <data name="{0} seats" xml:space="preserve"><value>{0} седишта</value></data>
+  <data name="{0} trailer" xml:space="preserve"><value>Трејлер за {0}</value></data>
+</root>

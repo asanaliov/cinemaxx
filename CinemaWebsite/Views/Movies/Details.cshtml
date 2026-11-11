@@ -23,11 +23,11 @@
 }
 
 <div class="mb-4">
-    <a asp-action="Index" class="btn btn-outline-secondary btn-sm">← Back to Movies</a>
+    <a asp-action="Index" class="btn btn-outline-secondary btn-sm">← @L["Back to Movies"]</a>
     @if (User.IsInRole("Admin"))
     {
-        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-secondary btn-sm ms-2">Edit</a>
-        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger btn-sm ms-2">Delete</a>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-secondary btn-sm ms-2">@L["Edit"]</a>
+        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger btn-sm ms-2">@L["Delete"]</a>
     }
 </div>
 
@@ -56,7 +56,7 @@
                     <img src="@(string.IsNullOrWhiteSpace(Model.PosterUrl) ? "https://placehold.co/400x600/1A1814/D4A341?text=No+Poster" : Model.PosterUrl)"
                          class="img-fluid w-100 h-100"
                          style="object-fit:cover"
-                         alt="@Model.Title poster"/>
+                         alt="@L["{0} poster", Model.Title]"/>
                 </div>
             </div>
             
@@ -90,40 +90,40 @@
                     @if (!string.IsNullOrWhiteSpace(Model.Director))
                     {
                         <div class="col-6 col-md-4">
-                            <div class="text-white-50 small text-uppercase tracking-wider mb-1" style="font-size: 0.75rem;">Director</div>
+                            <div class="text-white-50 small text-uppercase tracking-wider mb-1" style="font-size: 0.75rem;">@L["Director"]</div>
                             <div class="fw-semibold text-white">@Model.Director</div>
                         </div>
                     }
                     @if (!string.IsNullOrWhiteSpace(Model.Cast))
                     {
                         <div class="col-6 col-md-4">
-                            <div class="text-white-50 small text-uppercase tracking-wider mb-1" style="font-size: 0.75rem;">Cast</div>
+                            <div class="text-white-50 small text-uppercase tracking-wider mb-1" style="font-size: 0.75rem;">@L["Cast"]</div>
                             <div class="fw-semibold text-white text-truncate" title="@Model.Cast">@Model.Cast</div>
                         </div>
                     }
                     @if (Model.Duration > 0)
                     {
                         <div class="col-6 col-md-4">
-                            <div class="text-white-50 small text-uppercase tracking-wider mb-1" style="font-size: 0.75rem;">Duration</div>
-                            <div class="fw-semibold text-white">@Model.Duration min</div>
+                            <div class="text-white-50 small text-uppercase tracking-wider mb-1" style="font-size: 0.75rem;">@L["Duration"]</div>
+                            <div class="fw-semibold text-white">@L["{0} min", Model.Duration]</div>
                         </div>
                     }
                     <div class="col-6 col-md-4">
-                        <div class="text-white-50 small text-uppercase tracking-wider mb-1" style="font-size: 0.75rem;">Release</div>
+                        <div class="text-white-50 small text-uppercase tracking-wider mb-1" style="font-size: 0.75rem;">@L["Release"]</div>
                         <div class="fw-semibold text-white">@Model.ReleaseDate.ToString("MMM yyyy")</div>
                     </div>
                     @if (!string.IsNullOrWhiteSpace(Model.AgeRating))
                     {
                         <div class="col-6 col-md-4">
-                            <div class="text-white-50 small text-uppercase tracking-wider mb-1" style="font-size: 0.75rem;">Age Rating</div>
+                            <div class="text-white-50 small text-uppercase tracking-wider mb-1" style="font-size: 0.75rem;">@L["Age Rating"]</div>
                             <div class="fw-semibold text-white">@Model.AgeRating</div>
                         </div>
                     }
                     @if (!string.IsNullOrWhiteSpace(Model.Language))
                     {
                         <div class="col-6 col-md-4">
-                            <div class="text-white-50 small text-uppercase tracking-wider mb-1" style="font-size: 0.75rem;">Language</div>
-                            <div class="fw-semibold text-white">@Model.Language @(string.IsNullOrWhiteSpace(Model.SubtitleLanguage) ? "" : $" (Sub: {Model.SubtitleLanguage})")</div>
+                            <div class="text-white-50 small text-uppercase tracking-wider mb-1" style="font-size: 0.75rem;">@L["Language"]</div>
+                            <div class="fw-semibold text-white">@Model.Language @(string.IsNullOrWhiteSpace(Model.SubtitleLanguage) ? "" : " " + L["(Sub: {0})", Model.SubtitleLanguage])</div>
                         </div>
                     }
                 </div>
@@ -137,14 +137,14 @@
     <div class="col-lg-7 col-xl-8">
         <div class="d-flex justify-content-between align-items-end mb-4 border-bottom border-secondary border-opacity-25 pb-3">
             <div>
-                <h3 class="fw-bold mb-1">Book Tickets</h3>
+                <h3 class="fw-bold mb-1">@L["Book Tickets"]</h3>
                 @if (ViewBag.FilteredDay != null)
                 {
-                    <p class="text-muted mb-0">Showing available times for <strong>@ViewBag.FilteredDay</strong></p>
+                    <p class="text-muted mb-0">@L["Showing available times for"] <strong>@System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetDayName((DayOfWeek)ViewBag.FilteredDay)</strong></p>
                 }
                 else
                 {
-                    <p class="text-muted mb-0">Select a showtime below.</p>
+                    <p class="text-muted mb-0">@L["Select a showtime below."]</p>
                 }
             </div>
         </div>
@@ -158,15 +158,15 @@
                         <div class="card-body p-3 p-md-4">
                             <div class="row align-items-center g-3 text-center text-md-start">
                                 <div class="col-12 col-md-3">
-                                    <div class="text-muted small text-uppercase tracking-wider mb-1" style="font-size: 0.7rem;">Date</div>
+                                    <div class="text-muted small text-uppercase tracking-wider mb-1" style="font-size: 0.7rem;">@L["Date"]</div>
                                     <div class="fw-bold fs-5">@screening.StartTime.ToString("dd MMM")</div>
                                 </div>
                                 <div class="col-6 col-md-3 border-md-start border-secondary border-opacity-25 ps-md-4">
-                                    <div class="text-muted small text-uppercase tracking-wider mb-1" style="font-size: 0.7rem;">Time</div>
+                                    <div class="text-muted small text-uppercase tracking-wider mb-1" style="font-size: 0.7rem;">@L["Time"]</div>
                                     <div class="fw-bold fs-4 text-white" style="color:var(--accent) !important;">@screening.StartTime.ToString("HH:mm")</div>
                                 </div>
                                 <div class="col-6 col-md-3 border-start border-secondary border-opacity-25 ps-4">
-                                    <div class="text-muted small text-uppercase tracking-wider mb-1" style="font-size: 0.7rem;">Hall</div>
+                                    <div class="text-muted small text-uppercase tracking-wider mb-1" style="font-size: 0.7rem;">@L["Hall"]</div>
                                     <div class="fw-semibold">@screening.CinemaHall.Name</div>
                                     <div class="text-success small fw-bold mt-1">@screening.Price.ToMoney()</div>
                                 </div>
@@ -174,7 +174,7 @@
                                     <a asp-controller="Reservations"
                                        asp-action="Create"
                                        asp-route-screeningId="@screening.Id"
-                                       class="btn btn-primary w-100 py-2 rounded-pill fw-bold">Get Tickets</a>
+                                       class="btn btn-primary w-100 py-2 rounded-pill fw-bold">@L["Get Tickets"]</a>
                                 </div>
                             </div>
                         </div>
@@ -186,20 +186,20 @@
         {
             <div class="empty-state card border-0 p-5" style="background: var(--bg-elevated); border-radius: 12px;">
                 <div class="empty-icon fs-1 mb-3">🎟️</div>
-                <h5 class="fw-bold text-white">No Screenings Available</h5>
-                <p class="text-muted">There are currently no upcoming showtimes scheduled for this movie.</p>
+                <h5 class="fw-bold text-white">@L["No Screenings Available"]</h5>
+                <p class="text-muted">@L["There are currently no upcoming showtimes scheduled for this movie."]</p>
             </div>
         }
     </div>
 
     <!-- Trailer Section -->
     <div class="col-lg-5 col-xl-4">
-        <h4 class="fw-bold mb-4">Trailer</h4>
+        <h4 class="fw-bold mb-4">@L["Trailer"]</h4>
         @if (!string.IsNullOrWhiteSpace(embedUrl))
         {
             <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow" style="border: 1px solid rgba(255,255,255,0.1);">
                 <iframe src="@embedUrl"
-                        title="@Model.Title Trailer"
+                        title="@L["{0} trailer", Model.Title]"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerpolicy="strict-origin-when-cross-origin"
                         allowfullscreen>
@@ -210,13 +210,13 @@
         {
             <a href="@trailer" target="_blank" rel="noopener" class="card border-0 text-center p-5 text-decoration-none" style="background: var(--bg-card); border-radius: 16px;">
                 <div class="fs-1 mb-2">▶️</div>
-                <div class="fw-bold text-white">Watch Trailer on YouTube ↗</div>
+                <div class="fw-bold text-white">@L["Watch Trailer on YouTube"] ↗</div>
             </a>
         }
         else
         {
             <div class="card border-0 text-center p-5" style="background: var(--bg-elevated); border-radius: 16px;">
-                <div class="text-muted">No trailer available</div>
+                <div class="text-muted">@L["No trailer available"]</div>
             </div>
         }
     </div>

@@ -9,10 +9,10 @@
     <div class="d-flex gap-2">
         @if (User.IsInRole("Admin"))
         {
-            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-secondary btn-sm">Edit</a>
-            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger btn-sm">Delete</a>
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-secondary btn-sm">@L["Edit"]</a>
+            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger btn-sm">@L["Delete"]</a>
         }
-        <a asp-action="Index" class="btn btn-outline-secondary btn-sm">← Back</a>
+        <a asp-action="Index" class="btn btn-outline-secondary btn-sm">← @L["Back"]</a>
     </div>
 </div>
 
@@ -37,29 +37,29 @@
             <div class="card-body">
                 <div class="row g-3">
                     <div class="col-12">
-                        <div class="text-muted small">Position</div>
+                        <div class="text-muted small">@L["Position"]</div>
                         <div class="fw-semibold fs-5">@Model.Position</div>
                     </div>
                     <div class="col-sm-6">
-                        <div class="text-muted small">Email</div>
+                        <div class="text-muted small">@L["Email"]</div>
                         @if (!string.IsNullOrWhiteSpace(Model.Email))
                         {
                             <div class="fw-semibold"><a href="mailto:@Model.Email">@Model.Email</a></div>
                         }
                         else
                         {
-                            <div class="text-muted fst-italic">Not provided</div>
+                            <div class="text-muted fst-italic">@L["Not provided"]</div>
                         }
                     </div>
                     <div class="col-sm-6">
-                        <div class="text-muted small">Phone</div>
+                        <div class="text-muted small">@L["Phone"]</div>
                         @if (!string.IsNullOrWhiteSpace(Model.Phone))
                         {
                             <div class="fw-semibold"><a href="tel:@Model.Phone">@Model.Phone</a></div>
                         }
                         else
                         {
-                            <div class="text-muted fst-italic">Not provided</div>
+                            <div class="text-muted fst-italic">@L["Not provided"]</div>
                         }
                     </div>
                 </div>

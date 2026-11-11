@@ -5,10 +5,10 @@
 }
 
 <div class="page-header">
-    <h2>Services</h2>
+    <h2>@L["Services"]</h2>
     @if (User.IsInRole("Admin"))
     {
-        <a asp-action="Create" class="btn btn-success">+ Create service</a>
+        <a asp-action="Create" class="btn btn-success">+ @L["Create service"]</a>
     }
 </div>
 
@@ -16,7 +16,7 @@
 {
     <div class="empty-state">
         <div class="empty-icon">🍿</div>
-        <p class="text-muted">No services found.</p>
+        <p class="text-muted">@L["No services found."]</p>
     </div>
 }
 else
@@ -33,11 +33,11 @@ else
                             <p class="text-muted small mb-3">@(s.Description.Length > 120 ? s.Description[..120] + "…" : s.Description)</p>
                         }
                         <div class="mt-auto d-flex gap-2 flex-wrap">
-                            <a asp-action="Details" asp-route-id="@s.Id" class="btn btn-sm btn-outline-secondary">Details</a>
+                            <a asp-action="Details" asp-route-id="@s.Id" class="btn btn-sm btn-outline-secondary">@L["Details"]</a>
                             @if (User.IsInRole("Admin"))
                             {
-                                <a asp-action="Edit" asp-route-id="@s.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
-                                <a asp-action="Delete" asp-route-id="@s.Id" class="btn btn-sm btn-danger">Delete</a>
+                                <a asp-action="Edit" asp-route-id="@s.Id" class="btn btn-sm btn-outline-secondary">@L["Edit"]</a>
+                                <a asp-action="Delete" asp-route-id="@s.Id" class="btn btn-sm btn-danger">@L["Delete"]</a>
                             }
                         </div>
                     </div>

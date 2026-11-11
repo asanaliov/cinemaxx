@@ -6,19 +6,19 @@
 }
 
 @{
-    ViewData["Title"] = "My Reservations";
+    ViewData["Title"] = "My reservations";
 }
 
 <div class="page-header">
-    <h2>My Reservations</h2>
+    <h2>@L["My reservations"]</h2>
 </div>
 
 @if (!Model.Any())
 {
     <div class="empty-state">
         <div class="empty-icon">🎟️</div>
-        <p class="text-muted">You haven't made any reservations yet.</p>
-        <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Browse movies</a>
+        <p class="text-muted">@L["You haven't made any reservations yet."]</p>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary">@L["Browse movies"]</a>
     </div>
 }
 else
@@ -28,12 +28,12 @@ else
             <table class="table table-hover align-middle">
                 <thead>
                 <tr>
-                    <th>Movie</th>
-                    <th>Screening</th>
-                    <th>Seats</th>
-                    <th>Tickets</th>
-                    <th>Total</th>
-                    <th>Status</th>
+                    <th>@L["Movie"]</th>
+                    <th>@L["Screening"]</th>
+                    <th>@L["Seats"]</th>
+                    <th>@L["Tickets"]</th>
+                    <th>@L["Total"]</th>
+                    <th>@L["Status"]</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -43,10 +43,10 @@ else
                     var canCancel = r.Status != ReservationStatus.Cancelled && r.ScreeningStartTime > DateTime.UtcNow;
                     var (statusModifier, statusLabel) = r.Status switch
                     {
-                        ReservationStatus.Confirmed => ("is-confirmed", "Paid"),
-                        ReservationStatus.Cancelled when r.ExpiresAtUtc.HasValue => ("is-expired", "Expired"),
-                        ReservationStatus.Cancelled => ("is-cancelled", "Cancelled"),
-                        _ => ("is-pending", "Awaiting payment")
+                        ReservationStatus.Confirmed => ("is-confirmed", L["Paid"].Value),
+                        ReservationStatus.Cancelled when r.ExpiresAtUtc.HasValue => ("is-expired", L["Expired"].Value),
+                        ReservationStatus.Cancelled => ("is-cancelled", L["Cancelled"].Value),
+                        _ => ("is-pending", L["Awaiting payment"].Value)
                     };
 
                     <tr>
@@ -70,12 +70,12 @@ else
                         <td><span class="status-chip @statusModifier">@statusLabel</span></td>
                         <td>
                             <div class="reservations-actions">
-                                <a asp-action="Details" asp-route-id="@r.Id" class="btn btn-outline-secondary">Details</a>
+                                <a asp-action="Details" asp-route-id="@r.Id" class="btn btn-outline-secondary">@L["Details"]</a>
                                 @if (canCancel)
                                 {
                                     <form asp-action="Cancel" asp-route-id="@r.Id" method="post">
                                         @Html.AntiForgeryToken()
-                                        <button type="submit" class="btn btn-danger">Cancel</button>
+                                        <button type="submit" class="btn btn-danger">@L["Cancel"]</button>
                                     </form>
                                 }
                             </div>

@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Localization;
 
 namespace CinemaWebsite.Areas.Identity.Pages.Account
 {
@@ -30,13 +31,15 @@ namespace CinemaWebsite.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly IStringLocalizer<SharedResource> _localizer;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IStringLocalizer<SharedResource> localizer)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -44,6 +47,7 @@ namespace CinemaWebsite.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _localizer = localizer;
         }
 
         /// <summary>
@@ -147,7 +151,7 @@ namespace CinemaWebsite.Areas.Identity.Pages.Account
                 }
                 foreach (var error in result.Errors)
                 {
-                    ModelState.AddModelError(string.Empty, error.Description);
+                    ModelState.AddModelError(string.Empty, LocalizeIdentityError(error));
                 }
             }
 
@@ -176,6 +180,14 @@ namespace CinemaWebsite.Areas.Identity.Pages.Account
                 throw new NotSupportedException("The default UI requires a user store with email support.");
             }
             return (IUserEmailStore<ApplicationUser>)_userStore;
+        }
+
+        // Identity errors are translated by code ("Identity.PasswordTooShort" etc.);
+        // unknown codes fall back to Identity's English description.
+        private string LocalizeIdentityError(IdentityError error)
+        {
+            var translated = _localizer["Identity." + error.Code, Input.Email];
+            return translated.ResourceNotFound ? error.Description : translated.Value;
         }
     }
 }

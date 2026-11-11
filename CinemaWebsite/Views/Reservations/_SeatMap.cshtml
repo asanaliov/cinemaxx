@@ -6,8 +6,8 @@
     var grouped = seatMap.GroupBy(s => s.Row).OrderBy(g => g.Key);
 }
 
-<div id="seat-map" class="seat-map" data-price="@((screening?.Price ?? 0m).ToString(System.Globalization.CultureInfo.InvariantCulture))" data-currency="@MoneyExtensions.CurrencyCode" data-currency-locale="@MoneyExtensions.CultureName" role="group" aria-label="Seat map">
-    <div class="screen">SCREEN</div>
+<div id="seat-map" class="seat-map" data-price="@((screening?.Price ?? 0m).ToString(System.Globalization.CultureInfo.InvariantCulture))" data-currency="@MoneyExtensions.CurrencyCode" data-currency-locale="@MoneyExtensions.CultureName" role="group" aria-label="@L["Seat map"]">
+    <div class="screen">@L["SCREEN"]</div>
 
     @foreach (var rowGroup in grouped)
     {
@@ -20,9 +20,9 @@
                     var couplePosClass = isCouple ? (seat.Number % 2 == 1 ? " couple-left" : " couple-right") : "";
                     var css = (seat.IsReserved ? "seat reserved" : "seat available") + couplePosClass;
                     var seatLabel = $"{rowGroup.Key}{seat.Number}";
-                    var accessibleLabel = $"Seat {seatLabel}"
-                        + (isCouple ? ", couple seat" : "")
-                        + (seat.IsReserved ? ", reserved" : isCouple ? ", selects both seats" : "");
+                    var accessibleLabel = L["Seat {0}", seatLabel].Value
+                        + (isCouple ? ", " + L["couple seat"].Value : "")
+                        + (seat.IsReserved ? ", " + L["Reserved"].Value : isCouple ? ", " + L["selects both seats"].Value : "");
                     <button type="button" class="@css" data-seat-id="@seat.SeatId" data-pair-id="@(seat.PairSeatId?.ToString() ?? "")" title="@accessibleLabel" aria-label="@accessibleLabel" aria-pressed="false" @(seat.IsReserved ? "disabled" : "")>
                         <span class="seat-number">@seat.Number</span>
                         <span class="seat-state-marker seat-selected-marker" aria-hidden="true">✓</span>
@@ -43,15 +43,15 @@
     }
 
     <div class="seat-summary mt-2">
-        <span>Selected: <strong id="selectedCount">0</strong></span>
-        <span class="ms-3">Price per seat: <strong id="seatPrice">@((screening?.Price ?? 0m).ToMoney())</strong></span>
-        <span class="ms-3">Total: <strong id="totalPrice">@(0m.ToMoney())</strong></span>
+        <span>@L["Selected"]: <strong id="selectedCount">0</strong></span>
+        <span class="ms-3">@L["Price per seat"]: <strong id="seatPrice">@((screening?.Price ?? 0m).ToMoney())</strong></span>
+        <span class="ms-3">@L["Total"]: <strong id="totalPrice">@(0m.ToMoney())</strong></span>
     </div>
 
     <div class="seat-legend mt-2">
-        <span class="legend-item"><span class="legend-box available" aria-hidden="true"></span> Available</span>
-        <span class="legend-item ms-3"><span class="legend-box selected" aria-hidden="true">✓</span> Selected</span>
-        <span class="legend-item ms-3"><span class="legend-box reserved" aria-hidden="true">×</span> Reserved</span>
-        <span class="legend-item ms-3"><span class="legend-box couple" aria-hidden="true"></span> Couple (selected together)</span>
+        <span class="legend-item"><span class="legend-box available" aria-hidden="true"></span> @L["Available"]</span>
+        <span class="legend-item ms-3"><span class="legend-box selected" aria-hidden="true">✓</span> @L["Selected"]</span>
+        <span class="legend-item ms-3"><span class="legend-box reserved" aria-hidden="true">×</span> @L["Reserved"]</span>
+        <span class="legend-item ms-3"><span class="legend-box couple" aria-hidden="true"></span> @L["Couple (selected together)"]</span>
     </div>
 </div>

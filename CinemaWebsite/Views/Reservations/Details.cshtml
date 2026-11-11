@@ -11,28 +11,28 @@
     {
         ReservationStatus.Confirmed => (
             "✓",
-            "Reservation confirmed!",
-            "Your booking details are ready.",
+            L["Reservation confirmed!"].Value,
+            L["Your booking details are ready."].Value,
             "is-confirmed",
-            "Paid"),
+            L["Paid"].Value),
         ReservationStatus.Cancelled when Model.ExpiresAtUtc.HasValue => (
             "⏱",
-            "This reservation expired",
-            "The payment window closed and the seats have been released.",
+            L["This reservation expired"].Value,
+            L["The payment window closed and the seats have been released."].Value,
             "is-expired",
-            "Expired"),
+            L["Expired"].Value),
         ReservationStatus.Cancelled => (
             "✕",
-            "Reservation cancelled",
-            "This booking is no longer valid and the seats have been released.",
+            L["Reservation cancelled"].Value,
+            L["This booking is no longer valid and the seats have been released."].Value,
             "is-cancelled",
-            "Cancelled"),
+            L["Cancelled"].Value),
         _ => (
             "→",
-            "Complete your payment",
-            "Your seats are being held — finish payment before the hold expires.",
+            L["Complete your payment"].Value,
+            L["Your seats are being held — finish payment before the hold expires."].Value,
             "is-pending",
-            "Awaiting payment")
+            L["Awaiting payment"].Value)
     };
 
     var canCancel = Model.Status != ReservationStatus.Cancelled && Model.ScreeningStartTime > DateTime.UtcNow;
@@ -60,45 +60,45 @@
 
         <div class="confirmation-details">
             <div class="confirmation-row">
-                <span>Movie</span>
+                <span>@L["Movie"]</span>
                 <strong>@Model.MovieTitle</strong>
             </div>
             <div class="confirmation-row">
-                <span>Hall</span>
+                <span>@L["Hall"]</span>
                 <strong>@Model.HallName</strong>
             </div>
             <div class="confirmation-row">
-                <span>Screening</span>
+                <span>@L["Screening"]</span>
                 <strong>@Model.ScreeningStartTime.ToString("dd/MM/yyyy HH:mm")</strong>
             </div>
             <div class="confirmation-row">
-                <span>Seats</span>
-                <strong>@(Model.Seats.Any() ? string.Join(", ", Model.Seats.Select(s => $"Row {s.Row}, Seat {s.Number}")) : "No seats assigned")</strong>
+                <span>@L["Seats"]</span>
+                <strong>@(Model.Seats.Any() ? string.Join(", ", Model.Seats.Select(s => L["Row {0}, Seat {1}", s.Row, s.Number].Value)) : L["No seats assigned"].Value)</strong>
             </div>
             <div class="confirmation-row">
-                <span>Tickets</span>
+                <span>@L["Tickets"]</span>
                 <strong>@Model.NumberOfTickets</strong>
             </div>
             <div class="confirmation-row">
-                <span>Status</span>
+                <span>@L["Status"]</span>
                 <strong>@statusLabel</strong>
             </div>
 
             <hr />
 
             <div class="confirmation-total">
-                <span>Total</span>
+                <span>@L["Total"]</span>
                 <strong>@Model.TotalPrice.ToMoney()</strong>
             </div>
         </div>
 
         <div class="confirmation-actions">
-            <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Back</a>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-primary">@L["Back"]</a>
             @if (canCancel)
             {
                 <form asp-action="Cancel" asp-route-id="@Model.Id" asp-route-token="@(ViewBag.GuestToken as string)" method="post" class="d-inline">
                     @Html.AntiForgeryToken()
-                    <button type="submit" class="btn btn-danger">Cancel Reservation</button>
+                    <button type="submit" class="btn btn-danger">@L["Cancel reservation"]</button>
                 </form>
             }
         </div>

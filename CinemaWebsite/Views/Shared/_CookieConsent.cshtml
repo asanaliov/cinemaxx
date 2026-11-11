@@ -7,21 +7,21 @@
 {
     <div id="cookieConsentBanner" class="cookie-consent-banner">
         <p class="cookie-consent-text">
-            We use cookies to keep you signed in and hold your seat selection. See our
-            <a asp-controller="Home" asp-action="Privacy">Privacy Policy</a> for details.
+            @L["We use cookies to keep you signed in and hold your seat selection. See our"]
+            <a asp-controller="Home" asp-action="Privacy">@L["Privacy Policy"]</a> @L["for details."]
         </p>
         <div class="cookie-consent-actions">
             <form asp-controller="Home" asp-action="SetCookieConsent" method="post">
                 @Html.AntiForgeryToken()
                 <input type="hidden" name="consent" value="NecessaryOnly"/>
                 <input type="hidden" name="returnUrl" value="@returnUrl"/>
-                <button type="submit" class="btn btn-outline-secondary btn-sm">Necessary only</button>
+                <button type="submit" class="btn btn-outline-secondary btn-sm">@L["Necessary only"]</button>
             </form>
             <form asp-controller="Home" asp-action="SetCookieConsent" method="post">
                 @Html.AntiForgeryToken()
                 <input type="hidden" name="consent" value="AcceptAll"/>
                 <input type="hidden" name="returnUrl" value="@returnUrl"/>
-                <button type="submit" class="btn btn-primary btn-sm">Accept all</button>
+                <button type="submit" class="btn btn-primary btn-sm">@L["Accept all"]</button>
             </form>
         </div>
     </div>
