@@ -65,6 +65,3 @@ CinemaWebsite/
 CinemaWebsite.Tests/
 ```
 
-## Authors
-
-Built by [Asan](https://github.com/asanaliov) and [Mila Bozhinoska](https://github.com/milicabobica) as a team project.
