@@ -23,6 +23,21 @@ public static class DatabaseSeeder
             }
         }
 
+        // Users saved while ApplicationUser hid IdentityUser.Email have an empty Email
+        // or a missing NormalizedEmail; UpdateAsync re-normalizes them.
+        var usersWithBrokenEmail = await userManager.Users
+            .Where(u => u.Email == "" || u.NormalizedEmail == null)
+            .ToListAsync();
+        foreach (var user in usersWithBrokenEmail)
+        {
+            if (string.IsNullOrEmpty(user.Email))
+            {
+                user.Email = user.UserName;
+            }
+
+            await userManager.UpdateAsync(user);
+        }
+
         const string adminEmail = "admin@cinemaxx.cinema";
         const string legacyAdminEmail = "admin@motion.cinema";
         var admin = await userManager.Users.FirstOrDefaultAsync(u => u.Email == adminEmail)

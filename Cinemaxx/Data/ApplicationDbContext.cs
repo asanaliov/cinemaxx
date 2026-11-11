@@ -23,6 +23,11 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     {
         base.OnModelCreating(builder);
 
+        // Keeps the existing NOT NULL Email column so no migration is needed
+        builder.Entity<ApplicationUser>()
+            .Property(u => u.Email)
+            .IsRequired();
+
         // Movie ↔ Genre
         builder.Entity<MovieGenre>()
             .HasKey(mg => new { mg.MovieId, mg.GenreId });
