@@ -2,7 +2,7 @@
 
 A cinema booking website built with ASP.NET Core MVC. Visitors browse what's playing, pick seats on a live seat map and pay to confirm. Admins manage movies, screenings, halls, news and messages. The whole site is available in English and Macedonian.
 
-![Cinemaxx home page](docs/screenshots/home.jpg)
+![Cinemaxx home page with Spider-Man hanging from the navbar](docs/screenshots/home.jpg)
 
 ![Seat selection](docs/screenshots/seats.jpg)
 
@@ -14,6 +14,7 @@ A cinema booking website built with ASP.NET Core MVC. Visitors browse what's pla
 - **Accounts**: register, log in, see and cancel your reservations
 - **Admin area**: dashboard, CRUD for movies, screenings, halls, genres, employees, news and services, plus a contact inbox
 - **English and Macedonian**: switch language from the navbar; your choice is remembered in a cookie
+- **Home page effect**: Spider-Man drops in on a web line from the top-left corner and hangs beside the hero on wide screens
 
 ## Tech stack
 
