@@ -1,0 +1,44 @@
+@model Cinemaxx.Models.CinemaHall
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<div class="page-header">
+    <h2>@Model.Name</h2>
+    <div class="d-flex gap-2">
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-secondary btn-sm">@L["Edit"]</a>
+            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger btn-sm">@L["Delete"]</a>
+        }
+        <a asp-action="Index" class="btn btn-outline-secondary btn-sm">← @L["Back"]</a>
+    </div>
+</div>
+
+<div class="form-page-card">
+    <div class="card">
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-sm-6">
+                    <div class="text-muted small">@L["Hall Number"]</div>
+                    <div class="fw-semibold">@Model.Number</div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-muted small">@L["Capacity"]</div>
+                    <div class="fw-semibold">@L["{0} seats", Model.Capacity]</div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-muted small">@L["Type"]</div>
+                    <div class="fw-semibold"><span class="badge bg-secondary">@Model.HallType</span></div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-muted small">@L["Available"]</div>
+                    <div class="fw-semibold @(Model.IsAvailable ? "text-success" : "text-muted")">
+                        @(Model.IsAvailable ? L["Yes"] : L["No"])
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

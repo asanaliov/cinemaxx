@@ -1,0 +1,57 @@
+@model IEnumerable<Cinemaxx.Services.SeatStatus>
+
+@{
+    var seatMap = Model ?? Enumerable.Empty<Cinemaxx.Services.SeatStatus>();
+    var screening = ViewBag.Screening as Cinemaxx.Models.Screening;
+    var grouped = seatMap.GroupBy(s => s.Row).OrderBy(g => g.Key);
+}
+
+<div id="seat-map" class="seat-map" data-price="@((screening?.Price ?? 0m).ToString(System.Globalization.CultureInfo.InvariantCulture))" data-currency="@MoneyExtensions.CurrencyCode" data-currency-locale="@MoneyExtensions.CultureName" role="group" aria-label="@L["Seat map"]">
+    <div class="screen">@L["SCREEN"]</div>
+
+    @foreach (var rowGroup in grouped)
+    {
+        <div class="seat-row" data-row="@rowGroup.Key">
+            <div class="row-label">@rowGroup.Key</div>
+            <div class="row-seats">
+                @foreach (var seat in rowGroup.OrderBy(s => s.Number))
+                {
+                    var isCouple = seat.SeatType == Cinemaxx.Models.SeatType.Couple;
+                    var couplePosClass = isCouple ? (seat.Number % 2 == 1 ? " couple-left" : " couple-right") : "";
+                    var css = (seat.IsReserved ? "seat reserved" : "seat available") + couplePosClass;
+                    var seatLabel = $"{rowGroup.Key}{seat.Number}";
+                    var accessibleLabel = L["Seat {0}", seatLabel].Value
+                        + (isCouple ? ", " + L["couple seat"].Value : "")
+                        + (seat.IsReserved ? ", " + L["Reserved"].Value : isCouple ? ", " + L["selects both seats"].Value : "");
+                    <button type="button" class="@css" data-seat-id="@seat.SeatId" data-pair-id="@(seat.PairSeatId?.ToString() ?? "")" title="@accessibleLabel" aria-label="@accessibleLabel" aria-pressed="false" @(seat.IsReserved ? "disabled" : "")>
+                        <span class="seat-number">@seat.Number</span>
+                        <span class="seat-state-marker seat-selected-marker" aria-hidden="true">✓</span>
+                        @if (seat.IsReserved)
+                        {
+                            <span class="seat-state-marker" aria-hidden="true">×</span>
+                        }
+                    </button>
+                    <input type="checkbox"
+                           class="d-none seat-select-input"
+                           name="selectedSeatIds"
+                           value="@seat.SeatId"
+                           data-seat-id="@seat.SeatId"
+                           @(seat.IsReserved ? "disabled" : "") />
+                }
+            </div>
+        </div>
+    }
+
+    <div class="seat-summary mt-2">
+        <span>@L["Selected"]: <strong id="selectedCount">0</strong></span>
+        <span class="ms-3">@L["Price per seat"]: <strong id="seatPrice">@((screening?.Price ?? 0m).ToMoney())</strong></span>
+        <span class="ms-3">@L["Total"]: <strong id="totalPrice">@(0m.ToMoney())</strong></span>
+    </div>
+
+    <div class="seat-legend mt-2">
+        <span class="legend-item"><span class="legend-box available" aria-hidden="true"></span> @L["Available"]</span>
+        <span class="legend-item ms-3"><span class="legend-box selected" aria-hidden="true">✓</span> @L["Selected"]</span>
+        <span class="legend-item ms-3"><span class="legend-box reserved" aria-hidden="true">×</span> @L["Reserved"]</span>
+        <span class="legend-item ms-3"><span class="legend-box couple" aria-hidden="true"></span> @L["Couple (selected together)"]</span>
+    </div>
+</div>

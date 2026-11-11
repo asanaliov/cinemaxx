@@ -20,17 +20,17 @@ A cinema booking website built with ASP.NET Core MVC. Visitors browse what's pla
 - .NET 10, ASP.NET Core MVC + Razor Pages (Identity)
 - Entity Framework Core with SQLite
 - Bootstrap 5 with custom CSS
-- xUnit tests in `CinemaWebsite.Tests`
+- xUnit tests in `Cinemaxx.Tests`
 
 ## Getting started
 
 Requirements: [.NET 10 SDK](https://dotnet.microsoft.com/download).
 
 ```bash
-dotnet run --project CinemaWebsite
+dotnet run --project Cinemaxx
 ```
 
-On first start the app applies migrations and seeds sample movies, halls, screenings and a development admin account (see `CinemaWebsite/Data/DatabaseSeeder.cs`). The database is a local `app.db` file.
+On first start the app applies migrations and seeds sample movies, halls, screenings and a development admin account (see `Cinemaxx/Data/DatabaseSeeder.cs`). The database is a local `app.db` file.
 
 Run the tests:
 
@@ -42,7 +42,7 @@ A `Dockerfile` is included; the container listens on port 8080.
 
 ## Localization
 
-All UI text goes through a shared localizer. The English text is the key, so English needs no resource file, and Macedonian lives in `CinemaWebsite/Resources/SharedResource.mk.resx`.
+All UI text goes through a shared localizer. The English text is the key, so English needs no resource file, and Macedonian lives in `Cinemaxx/Resources/SharedResource.mk.resx`.
 
 - In views: `@L["Browse movies"]`, or with values: `@L["{0} seats", hall.Capacity]`
 - In controllers: inject `IStringLocalizer<SharedResource>`
@@ -53,7 +53,7 @@ To add a language, add its culture in `Program.cs`, create `SharedResource.<cult
 ## Project structure
 
 ```
-CinemaWebsite/
+Cinemaxx/
   Controllers/    MVC controllers
   Services/       reservation and screening logic
   Models/         EF Core entities
@@ -62,6 +62,6 @@ CinemaWebsite/
   Areas/Identity/ login, register and account pages
   Resources/      translations
   wwwroot/css/    site, home, booking, seat map and auth styles
-CinemaWebsite.Tests/
+Cinemaxx.Tests/
 ```
 
