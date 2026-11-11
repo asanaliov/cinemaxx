@@ -1,11 +1,11 @@
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
-COPY CinemaWebsite/CinemaWebsite.csproj CinemaWebsite/
-RUN dotnet restore CinemaWebsite/CinemaWebsite.csproj
+COPY Cinemaxx/Cinemaxx.csproj Cinemaxx/
+RUN dotnet restore Cinemaxx/Cinemaxx.csproj
 
-COPY CinemaWebsite/ CinemaWebsite/
-RUN dotnet publish CinemaWebsite/CinemaWebsite.csproj \
+COPY Cinemaxx/ Cinemaxx/
+RUN dotnet publish Cinemaxx/Cinemaxx.csproj \
     --configuration Release --no-restore --output /app/publish \
     /p:UseAppHost=false
 
@@ -19,4 +19,4 @@ COPY --from=build /app/publish .
 
 EXPOSE 8080
 
-ENTRYPOINT ["dotnet", "CinemaWebsite.dll"]
+ENTRYPOINT ["dotnet", "Cinemaxx.dll"]
