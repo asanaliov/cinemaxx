@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Logging.Abstractions;
+using Microsoft.Extensions.Options;
 using Xunit;
 
 namespace CinemaWebsite.Tests;
@@ -45,7 +48,7 @@ public class ScreeningTimeTests
         using var provider = services.BuildServiceProvider();
         var httpContext = new DefaultHttpContext();
         var controller = new ReservationsController(context, new ReservationService(context),
-            provider.GetRequiredService<UserManager<ApplicationUser>>(), new EphemeralDataProtectionProvider())
+            provider.GetRequiredService<UserManager<ApplicationUser>>(), new EphemeralDataProtectionProvider(), EnglishLocalizer())
         {
             ControllerContext = new ControllerContext { HttpContext = httpContext },
             TempData = new TempDataDictionary(httpContext, new MemoryTempDataProvider())
@@ -82,7 +85,7 @@ public class ScreeningTimeTests
         context.Screenings.Add(upcoming);
         await context.SaveChangesAsync();
 
-        var controller = new MoviesController(context);
+        var controller = new MoviesController(context, EnglishLocalizer());
         var result = Assert.IsType<ViewResult>(await controller.Details(started.MovieId, null));
         var movie = Assert.IsType<Movie>(result.Model);
 
@@ -95,4 +98,8 @@ public class ScreeningTimeTests
 
         public void SaveTempData(HttpContext context, IDictionary<string, object> values) { }
     }
+
+    private static IStringLocalizer<SharedResource> EnglishLocalizer() =>
+        new StringLocalizer<SharedResource>(new ResourceManagerStringLocalizerFactory(
+            Options.Create(new LocalizationOptions()), NullLoggerFactory.Instance));
 }

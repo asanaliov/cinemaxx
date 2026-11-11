@@ -1,0 +1,15 @@
+@{
+    var current = System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+    var returnUrl = Context.Request.Path + Context.Request.QueryString;
+    var languages = new[] { ("en", "EN", "English"), ("mk", "MK", "Македонски") };
+}
+
+<form class="language-switcher" asp-area="" asp-controller="Home" asp-action="SetLanguage" method="post" aria-label="@L["Language"]">
+    <input type="hidden" name="returnUrl" value="@returnUrl"/>
+    @foreach (var (code, label, name) in languages)
+    {
+        <button type="submit" name="culture" value="@code" lang="@code" title="@name"
+                class="language-option @(current == code ? "is-active" : null)"
+                aria-pressed="@(current == code ? "true" : "false")">@label</button>
+    }
+</form>

@@ -16,8 +16,8 @@
   color: var(--text-muted);
   border-bottom: 3px solid var(--accent);
   border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-  box-shadow: 0 15px 35px -5px rgba(91, 123, 154, 0.4);
-  background: linear-gradient(to bottom, transparent, rgba(91, 123, 154, 0.05));
+  box-shadow: 0 15px 35px -5px rgba(var(--accent-rgb), 0.4);
+  background: linear-gradient(to bottom, transparent, rgba(var(--accent-rgb), 0.05));
 }
 
 .seat-row {
@@ -99,15 +99,15 @@
   transform: translateY(-3px) scale(1.05);
   border-color: var(--accent);
   color: var(--text);
-  box-shadow: 0 5px 12px rgba(91,123,154,0.2);
+  box-shadow: 0 5px 12px rgba(var(--accent-rgb), 0.2);
 }
 
 .seat.selected {
   background: var(--accent);
   border-color: var(--accent);
-  color: #fff;
+  color: var(--on-accent);
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(91,123,154,0.5), 0 0 0 2px rgba(91,123,154,0.2);
+  box-shadow: 0 4px 15px rgba(var(--accent-rgb), 0.5), 0 0 0 2px rgba(var(--accent-rgb), 0.2);
 }
 
 .seat.reserved {
@@ -196,7 +196,7 @@
 .legend-box.selected {
   background: var(--accent);
   border-color: var(--accent);
-  color: #fff;
+  color: var(--on-accent);
 }
 
 .legend-box.reserved {

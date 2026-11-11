@@ -9,10 +9,10 @@
     <div class="d-flex gap-2">
         @if (User.IsInRole("Admin"))
         {
-            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-secondary btn-sm">Edit</a>
-            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger btn-sm">Delete</a>
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-secondary btn-sm">@L["Edit"]</a>
+            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger btn-sm">@L["Delete"]</a>
         }
-        <a asp-action="Index" class="btn btn-outline-secondary btn-sm">← Back</a>
+        <a asp-action="Index" class="btn btn-outline-secondary btn-sm">← @L["Back"]</a>
     </div>
 </div>
 
@@ -24,11 +24,11 @@
                     <small class="text-muted">@Model.PublishedDate.ToString("dd MMM yyyy")</small>
                     @if (!string.IsNullOrWhiteSpace(Model.Author))
                     {
-                        <small class="text-muted">by @Model.Author</small>
+                        <small class="text-muted">@L["by {0}", Model.Author]</small>
                     }
                     @if (!Model.IsPublished)
                     {
-                        <span class="badge" style="background:rgba(200,150,0,.2);color:#c8a000;border:1px solid rgba(200,150,0,.3)">Draft</span>
+                        <span class="badge" style="background:rgba(200,150,0,.2);color:#c8a000;border:1px solid rgba(200,150,0,.3)">@L["Draft"]</span>
                     }
                 </div>
                 @if (!string.IsNullOrWhiteSpace(Model.Summary))

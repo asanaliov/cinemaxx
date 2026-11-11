@@ -1,12 +1,12 @@
 @model CinemaWebsite.Models.News
 
 @{
-    ViewData["Title"] = "Create Article";
+    ViewData["Title"] = "Create article";
 }
 
 <div class="page-header">
-    <h2>Create Article</h2>
-    <a asp-action="Index" class="btn btn-outline-secondary btn-sm">← Back</a>
+    <h2>@L["Create article"]</h2>
+    <a asp-action="Index" class="btn btn-outline-secondary btn-sm">← @L["Back"]</a>
 </div>
 
 <div class="form-page-card">
@@ -43,12 +43,12 @@
 
                 <div class="form-check mb-4">
                     <input asp-for="IsPublished" class="form-check-input"/>
-                    <label asp-for="IsPublished" class="form-check-label">Published</label>
+                    <label asp-for="IsPublished" class="form-check-label">@L["Published"]</label>
                 </div>
 
                 <div class="d-flex gap-2">
-                    <button class="btn btn-primary" type="submit">Save</button>
-                    <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+                    <button class="btn btn-primary" type="submit">@L["Save"]</button>
+                    <a asp-action="Index" class="btn btn-outline-secondary">@L["Cancel"]</a>
                 </div>
             </form>
         </div>

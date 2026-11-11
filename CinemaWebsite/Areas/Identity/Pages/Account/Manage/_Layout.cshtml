@@ -2,14 +2,14 @@
     Layout = "/Areas/Identity/Pages/_Layout.cshtml";
 }
 
-<h1>Manage your account</h1>
-<p class="account-settings-intro">Update your profile, email and security settings.</p>
+<h1>@L["Manage your account"]</h1>
+<p class="account-settings-intro">@L["Update your profile, email and security settings."]</p>
 
 <div class="account-settings-layout">
-    <nav class="account-settings-nav" aria-label="Account settings">
+    <nav class="account-settings-nav" aria-label="@L["Account settings"]">
         <partial name="_ManageNav" />
     </nav>
-    <section class="account-settings-panel" aria-label="Selected account setting">
+    <section class="account-settings-panel" aria-label="@L["Selected account setting"]">
         @RenderBody()
     </section>
 </div>

@@ -195,7 +195,7 @@
 .auth-card .alert-warning,
 .auth-card .alert-info {
     color: var(--accent-hover);
-    border-color: rgba(91, 123, 154, .3);
+    border-color: rgba(var(--accent-rgb), .3);
     background: var(--accent-dim);
 }
 
@@ -281,7 +281,7 @@
 
 .auth-card .nav-pills .nav-link.active {
     background: var(--accent);
-    color: #fff;
+    color: var(--on-accent);
 }
 
 @media (max-width: 991.98px) {

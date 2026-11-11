@@ -12,14 +12,14 @@
     <div class="row g-4 payment-shell">
         <div class="col-lg-7">
             <div class="payment-card">
-                <h1 class="payment-title">Confirm and pay</h1>
-                <p class="payment-subtitle">Complete payment to finalize your reservation.</p>
+                <h1 class="payment-title">@L["Confirm and pay"]</h1>
+                <p class="payment-subtitle">@L["Complete payment to finalize your reservation."]</p>
 
                 @if (Model.ExpiresAtUtc.HasValue)
                 {
                     <div id="holdCountdown" class="payment-countdown" data-expires-at="@(Model.ExpiresAtUtc.Value.ToString("yyyy-MM-ddTHH:mm:ss.fff") + "Z")">
                         <span aria-hidden="true">⏱</span>
-                        <span>Your seats are held for <strong id="holdCountdownValue">10:00</strong></span>
+                        <span>@L["Your seats are held for"] <strong id="holdCountdownValue">10:00</strong></span>
                     </div>
                 }
 
@@ -36,7 +36,7 @@
                         <input asp-for="Email" class="form-control" readonly="@(!Model.IsEmailRequired)" />
                         @if (!Model.IsEmailRequired)
                         {
-                            <div class="form-text">Using your account email.</div>
+                            <div class="form-text">@L["Using your account email."]</div>
                         }
                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
@@ -56,7 +56,7 @@
                     <div class="row">
                         <div class="col-md-6 payment-field">
                             <label asp-for="ExpirationDate" class="form-label"></label>
-                            <input asp-for="ExpirationDate" class="form-control" placeholder="MM/YY" />
+                            <input asp-for="ExpirationDate" class="form-control" placeholder="@L["MM/YY"]" />
                             <span asp-validation-for="ExpirationDate" class="text-danger"></span>
                         </div>
                         <div class="col-md-6 payment-field">
@@ -72,43 +72,43 @@
                         <span asp-validation-for="BillingAddress" class="text-danger"></span>
                     </div>
 
-                    <button type="submit" class="btn btn-primary payment-cta">Confirm and pay</button>
+                    <button type="submit" class="btn btn-primary payment-cta">@L["Confirm and pay"]</button>
                 </form>
             </div>
         </div>
         <div class="col-lg-5">
             <aside class="payment-summary">
-                <h2 class="payment-summary-title">Reservation summary</h2>
+                <h2 class="payment-summary-title">@L["Reservation summary"]</h2>
 
                 @* <div class="payment-summary-row"> *@
                 @*     <span>Reservation</span> *@
                 @*     <strong>#@Model.ReservationId</strong> *@
                 @* </div> *@
                 <div class="payment-summary-row">
-                    <span>Movie</span>
+                    <span>@L["Movie"]</span>
                     <strong>@Model.MovieTitle</strong>
                 </div>
                 <div class="payment-summary-row">
-                    <span>Hall</span>
+                    <span>@L["Hall"]</span>
                     <strong>@Model.HallName</strong>
                 </div>
                 <div class="payment-summary-row">
-                    <span>Screening</span>
+                    <span>@L["Screening"]</span>
                     <strong>@Model.ScreeningStartTime.ToString("dd/MM/yyyy HH:mm")</strong>
                 </div>
                 <div class="payment-summary-row">
-                    <span>Seats</span>
-                    <strong>@(Model.Seats.Any() ? string.Join(", ", Model.Seats.Select(s => $"Row {s.Row}, Seat {s.Number}")) : "-")</strong>
+                    <span>@L["Seats"]</span>
+                    <strong>@(Model.Seats.Any() ? string.Join(", ", Model.Seats.Select(s => L["Row {0}, Seat {1}", s.Row, s.Number].Value)) : "-")</strong>
                 </div>
                 <div class="payment-summary-row">
-                    <span>Status</span>
-                    <strong>Pending payment</strong>
+                    <span>@L["Status"]</span>
+                    <strong>@L["Pending payment"]</strong>
                 </div>
 
                 <hr />
 
                 <div class="payment-total">
-                    <span>Total</span>
+                    <span>@L["Total"]</span>
                     <strong>@Model.TotalPrice.ToMoney()</strong>
                 </div>
             </aside>

@@ -9,9 +9,9 @@
     @await RenderSectionAsync("Head", required: false)
 }
 
-<section class="auth-page" aria-label="Your account">
+<section class="auth-page" aria-label="@L["Your account"]">
     <div class="auth-card @(isManagementPage ? "auth-card-manage" : "")">
-        <div class="auth-header">Your cinema account</div>
+        <div class="auth-header">@L["Your cinema account"]</div>
         @RenderBody()
     </div>
 </section>

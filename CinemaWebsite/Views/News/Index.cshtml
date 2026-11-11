@@ -5,10 +5,10 @@
 }
 
 <div class="page-header">
-    <h2>News</h2>
+    <h2>@L["News"]</h2>
     @if (User.IsInRole("Admin"))
     {
-        <a asp-action="Create" class="btn btn-success">+ Create article</a>
+        <a asp-action="Create" class="btn btn-success">+ @L["Create article"]</a>
     }
 </div>
 
@@ -16,7 +16,7 @@
 {
     <div class="empty-state">
         <div class="empty-icon">📰</div>
-        <p class="text-muted">No news articles yet.</p>
+        <p class="text-muted">@L["No news articles yet."]</p>
     </div>
 }
 else
@@ -30,11 +30,11 @@ else
                         <div class="d-flex align-items-center gap-2">
                             @if (!n.IsPublished)
                             {
-                                <span class="badge" style="background:rgba(200,150,0,.2);color:#c8a000;border:1px solid rgba(200,150,0,.3)">Draft</span>
+                                <span class="badge" style="background:rgba(200,150,0,.2);color:#c8a000;border:1px solid rgba(200,150,0,.3)">@L["Draft"]</span>
                             }
                             else
                             {
-                                <span class="badge bg-secondary">Published</span>
+                                <span class="badge bg-secondary">@L["Published"]</span>
                             }
                         </div>
                         <h6 class="card-title mb-0">
@@ -50,8 +50,8 @@ else
                             @if (User.IsInRole("Admin"))
                             {
                                 <div class="d-flex gap-1">
-                                    <a asp-action="Edit" asp-route-id="@n.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
-                                    <a asp-action="Delete" asp-route-id="@n.Id" class="btn btn-sm btn-danger">Delete</a>
+                                    <a asp-action="Edit" asp-route-id="@n.Id" class="btn btn-sm btn-outline-secondary">@L["Edit"]</a>
+                                    <a asp-action="Delete" asp-route-id="@n.Id" class="btn btn-sm btn-danger">@L["Delete"]</a>
                                 </div>
                             }
                         </div>

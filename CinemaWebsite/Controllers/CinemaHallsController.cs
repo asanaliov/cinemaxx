@@ -3,11 +3,12 @@ using CinemaWebsite.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 
 namespace CinemaWebsite.Controllers;
 
 [Authorize(Roles = "Admin")]
-public class CinemaHallsController(ApplicationDbContext context) : Controller
+public class CinemaHallsController(ApplicationDbContext context, IStringLocalizer<SharedResource> localizer) : Controller
 {
     [AllowAnonymous]
     public async Task<IActionResult> Index() => View(await context.CinemaHalls.AsNoTracking().OrderBy(h => h.Number).ToListAsync());
@@ -71,7 +72,7 @@ public class CinemaHallsController(ApplicationDbContext context) : Controller
         if (item is null) return NotFound();
         if (item.Screenings.Any())
         {
-            ModelState.AddModelError(string.Empty, "Cannot delete hall with existing screenings.");
+            ModelState.AddModelError(string.Empty, localizer["Cannot delete hall with existing screenings."]);
             return View("Delete", item);
         }
 

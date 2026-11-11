@@ -1,5 +1,5 @@
 @model CinemaWebsite.Models.Screening
-<h3>Edit Screening</h3>
+<h3>@L["Edit Screening"]</h3>
 <form asp-action="Edit" asp-route-id="@Model.Id" method="post">
     <input type="hidden" asp-for="Id" />
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -12,11 +12,11 @@
     <select asp-for="CinemaHallId" asp-items="ViewBag.Halls" class="form-select mb-2"></select>
     <span asp-validation-for="CinemaHallId" class="text-danger"></span>
 
-    <label asp-for="StartTime" class="form-label">Start Time (Skopje time)</label>
+    <label asp-for="StartTime" class="form-label">@L["Start Time (Skopje time)"]</label>
     <input asp-for="StartTime" type="datetime-local" class="form-control mb-2" />
     <span asp-validation-for="StartTime" class="text-danger"></span>
 
-    <div class="form-text mb-2">End time is calculated automatically from start time + movie duration.</div>
+    <div class="form-text mb-2">@L["End time is calculated automatically from start time + movie duration."]</div>
 
     <label asp-for="Price" class="form-label"></label>
     <input asp-for="Price" class="form-control mb-2" />
@@ -30,5 +30,5 @@
     <input asp-for="SubtitleLanguage" class="form-control mb-2" />
     <span asp-validation-for="SubtitleLanguage" class="text-danger"></span>
 
-    <button class="btn btn-primary" type="submit">Save</button>
+    <button class="btn btn-primary" type="submit">@L["Save"]</button>
 </form>

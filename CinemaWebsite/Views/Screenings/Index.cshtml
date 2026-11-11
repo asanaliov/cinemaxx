@@ -5,10 +5,10 @@
 }
 
 <div class="page-header">
-    <h2>Screenings</h2>
+    <h2>@L["Screenings"]</h2>
     @if (User.IsInRole("Admin"))
     {
-        <a asp-action="Create" class="btn btn-success">+ Create screening</a>
+        <a asp-action="Create" class="btn btn-success">+ @L["Create screening"]</a>
     }
 </div>
 
@@ -16,7 +16,7 @@
 {
     <div class="empty-state">
         <div class="empty-icon">🕒</div>
-        <p class="text-muted">No screenings found.</p>
+        <p class="text-muted">@L["No screenings found."]</p>
     </div>
 }
 else
@@ -25,10 +25,10 @@ else
         <table class="table table-hover align-middle">
             <thead>
             <tr>
-                <th>Movie</th>
-                <th>Hall</th>
-                <th>Start Time</th>
-                <th>Price</th>
+                <th>@L["Movie"]</th>
+                <th>@L["Hall"]</th>
+                <th>@L["Start Time"]</th>
+                <th>@L["Price"]</th>
                 <th></th>
             </tr>
             </thead>
@@ -41,11 +41,11 @@ else
                     <td>@s.StartTime.ToString("dd/MM/yyyy HH:mm")</td>
                     <td>@s.Price.ToMoney()</td>
                     <td class="text-end">
-                        <a asp-action="Details" asp-route-id="@s.Id" class="btn btn-sm btn-outline-secondary">Details</a>
+                        <a asp-action="Details" asp-route-id="@s.Id" class="btn btn-sm btn-outline-secondary">@L["Details"]</a>
                         @if (User.IsInRole("Admin"))
                         {
-                            <a asp-action="Edit" asp-route-id="@s.Id" class="btn btn-sm btn-outline-secondary ms-1">Edit</a>
-                            <a asp-action="Delete" asp-route-id="@s.Id" class="btn btn-sm btn-danger ms-1">Delete</a>
+                            <a asp-action="Edit" asp-route-id="@s.Id" class="btn btn-sm btn-outline-secondary ms-1">@L["Edit"]</a>
+                            <a asp-action="Delete" asp-route-id="@s.Id" class="btn btn-sm btn-danger ms-1">@L["Delete"]</a>
                         }
                     </td>
                 </tr>

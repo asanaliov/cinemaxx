@@ -4,6 +4,10 @@ using CinemaWebsite.Data;
 using CinemaWebsite.Models;
 using CinemaWebsite.Services;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
+using CinemaWebsite;
+using CinemaWebsite.Extensions;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,13 +27,37 @@ builder.Services.AddScoped<IReservationService, ReservationService>();
 builder.Services.AddScoped<IScreeningService, ScreeningService>();
 
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
-builder.Services.AddControllersWithViews();
-builder.Services.AddRazorPages();
+builder.Services.AddControllersWithViews()
+    .AddViewLocalization()
+    .AddDataAnnotationsLocalization(options =>
+        options.DataAnnotationLocalizerProvider = (_, factory) => factory.Create(typeof(SharedResource)));
+builder.Services.AddRazorPages()
+    .AddViewLocalization()
+    .AddDataAnnotationsLocalization(options =>
+        options.DataAnnotationLocalizerProvider = (_, factory) => factory.Create(typeof(SharedResource)));
+
+builder.Services.AddOptions<MvcOptions>().Configure<IStringLocalizerFactory>((options, factory) =>
+{
+    options.ModelMetadataDetailsProviders.Add(new LocalizationMetadataProvider(factory));
+
+    var localizer = factory.Create(typeof(SharedResource));
+    var messages = options.ModelBindingMessageProvider;
+    messages.SetValueMustNotBeNullAccessor(value => localizer["The value '{0}' is invalid.", value]);
+    messages.SetAttemptedValueIsInvalidAccessor((value, field) => localizer["The value '{0}' is not valid for {1}.", value, field]);
+    messages.SetValueIsInvalidAccessor(value => localizer["The value '{0}' is invalid.", value]);
+    messages.SetValueMustBeANumberAccessor(field => localizer["The field {0} must be a number.", field]);
+    messages.SetMissingBindRequiredValueAccessor(field => localizer["A value for the '{0}' parameter or property was not provided.", field]);
+});
+
+// Macedonian month and day names, but keep "." as the decimal separator so prices
+// and ratings round-trip the same way in forms, client validation and data attributes.
+var macedonian = new CultureInfo("mk");
+macedonian.NumberFormat = (NumberFormatInfo)CultureInfo.InvariantCulture.NumberFormat.Clone();
 
 var supportedCultures = new[]
 {
     new CultureInfo("en"),
-    new CultureInfo("mk")
+    macedonian
 };
 
 builder.Services.Configure<RequestLocalizationOptions>(options =>

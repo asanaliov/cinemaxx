@@ -4,12 +4,13 @@ using CinemaWebsite.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CinemaWebsite.Controllers;
 
 [Authorize(Roles = "Admin")]
-public class ScreeningsController(ApplicationDbContext context, IScreeningService screeningService) : Controller
+public class ScreeningsController(ApplicationDbContext context, IScreeningService screeningService, IStringLocalizer<SharedResource> localizer) : Controller
 {
     [AllowAnonymous]
     public async Task<IActionResult> Index()
@@ -42,7 +43,7 @@ public class ScreeningsController(ApplicationDbContext context, IScreeningServic
         if (!hasMovies || !hasAvailableHalls)
         {
             ModelState.AddModelError(string.Empty,
-                "To create a screening, add at least one movie and one available hall first.");
+                localizer["To create a screening, add at least one movie and one available hall first."]);
         }
 
         var start = CinemaTime.Now.Date;
@@ -67,7 +68,7 @@ public class ScreeningsController(ApplicationDbContext context, IScreeningServic
         if (!hasMovies || !hasAvailableHalls)
         {
             ModelState.AddModelError(string.Empty,
-                "Cannot create screening because there are no movies or no available halls.");
+                localizer["Cannot create screening because there are no movies or no available halls."]);
         }
 
         await ApplyAutoEndTimeAsync(item);
@@ -138,7 +139,7 @@ public class ScreeningsController(ApplicationDbContext context, IScreeningServic
         var hasActiveReservations = item.Reservations.Any(r => r.Status != ReservationStatus.Cancelled);
         if (hasActiveReservations)
         {
-            ModelState.AddModelError(string.Empty, "Cannot delete screening with active reservations.");
+            ModelState.AddModelError(string.Empty, localizer["Cannot delete screening with active reservations."]);
             var viewModel = await context.Screenings
                 .Include(s => s.Movie)
                 .Include(s => s.CinemaHall)
@@ -171,34 +172,34 @@ public class ScreeningsController(ApplicationDbContext context, IScreeningServic
     {
         if (!await context.Movies.AnyAsync(m => m.Id == item.MovieId))
         {
-            ModelState.AddModelError(nameof(Screening.MovieId), "Selected movie does not exist.");
+            ModelState.AddModelError(nameof(Screening.MovieId), localizer["Selected movie does not exist."]);
         }
 
         var hall = await context.CinemaHalls.FirstOrDefaultAsync(h => h.Id == item.CinemaHallId);
         if (hall is null)
         {
-            ModelState.AddModelError(nameof(Screening.CinemaHallId), "Selected hall does not exist.");
+            ModelState.AddModelError(nameof(Screening.CinemaHallId), localizer["Selected hall does not exist."]);
             return;
         }
 
         if (!hall.IsAvailable)
         {
-            ModelState.AddModelError(nameof(Screening.CinemaHallId), "Selected hall is not available.");
+            ModelState.AddModelError(nameof(Screening.CinemaHallId), localizer["Selected hall is not available."]);
         }
 
         if (item.StartTime >= item.EndTime)
         {
-            ModelState.AddModelError(nameof(Screening.EndTime), "End time must be after start time.");
+            ModelState.AddModelError(nameof(Screening.EndTime), localizer["End time must be after start time."]);
         }
 
         if (item.Price <= 0)
         {
-            ModelState.AddModelError(nameof(Screening.Price), "Price must be greater than zero.");
+            ModelState.AddModelError(nameof(Screening.Price), localizer["Price must be greater than zero."]);
         }
 
         if (await screeningService.HasOverlapAsync(item.CinemaHallId, item.StartTime, item.EndTime, ignoreScreeningId))
         {
-            ModelState.AddModelError(string.Empty, "Screening overlaps with another screening in this hall.");
+            ModelState.AddModelError(string.Empty, localizer["Screening overlaps with another screening in this hall."]);
         }
     }
 
@@ -215,7 +216,7 @@ public class ScreeningsController(ApplicationDbContext context, IScreeningServic
 
         if (movie.Duration <= 0)
         {
-            ModelState.AddModelError(nameof(Screening.MovieId), "Selected movie has invalid duration.");
+            ModelState.AddModelError(nameof(Screening.MovieId), localizer["Selected movie has invalid duration."]);
             return;
         }
 

@@ -4,24 +4,24 @@
     ViewData["Title"] = "Register confirmation";
 }
 
-<h1>Confirm your account</h1>
+<h1>@L["Confirm your account"]</h1>
 @{
     if (@Model.DisplayConfirmAccountLink)
     {
 <p>
     This app does not currently have a real email sender registered, see <a href="https://aka.ms/aspaccountconf">these docs</a> for how to configure a real email sender.
-    Normally this would be emailed: <a id="confirm-link" href="@Model.EmailConfirmationUrl">Click here to confirm your account</a>
+    Normally this would be emailed: <a id="confirm-link" href="@Model.EmailConfirmationUrl">@L["Click here to confirm your account"]</a>
 </p>
     }
     else
     {
 <p>
-        Please check your email to confirm your account.
+        @L["Please check your email to confirm your account."]
 </p>
     }
 }
 
 <div class="auth-links">
-    <a class="btn btn-primary" asp-page="./Login">Back to login</a>
+    <a class="btn btn-primary" asp-page="./Login">@L["Back to login"]</a>
 </div>
 

@@ -1,3 +1,60 @@
 @model IEnumerable<CinemaWebsite.Models.ContactMessage>
-<h3>Contact Messages</h3>
-<table class="table"><tr><th>From</th><th>Subject</th><th>Date</th><th>Read</th><th></th></tr>@foreach (var m in Model){<tr><td>@m.Name (@m.Email)</td><td>@m.Subject</td><td>@m.SentAt</td><td>@m.IsRead</td><td><a asp-action="Details" asp-route-id="@m.Id">Details</a></td></tr>}</table>
+
+@{
+    ViewData["Title"] = "Inbox";
+}
+
+<div class="page-header">
+    <h2>@L["Inbox"]</h2>
+    <span class="text-muted small">@L["{0} unread", Model.Count(m => !m.IsRead)]</span>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="empty-state card">
+        <div class="empty-icon">✉️</div>
+        <p class="text-muted">@L["No messages yet."]</p>
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-hover align-middle">
+            <thead>
+            <tr>
+                <th>@L["From"]</th>
+                <th>@L["Subject"]</th>
+                <th>@L["Received"]</th>
+                <th>@L["Status"]</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var m in Model)
+            {
+                <tr class="@(m.IsRead ? null : "is-unread")">
+                    <td>
+                        <div class="fw-semibold">@m.Name</div>
+                        <div class="text-muted small">@m.Email</div>
+                    </td>
+                    <td>@m.Subject</td>
+                    <td class="text-nowrap">@m.SentAt.ToLocalTime().ToString("dd MMM yyyy, HH:mm")</td>
+                    <td>
+                        @if (m.IsRead)
+                        {
+                            <span class="badge bg-secondary">@L["Read"]</span>
+                        }
+                        else
+                        {
+                            <span class="badge badge-new">@L["New"]</span>
+                        }
+                    </td>
+                    <td class="text-end">
+                        <a asp-action="Details" asp-route-id="@m.Id" class="btn btn-sm btn-outline-secondary">@L["Open"]</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}
