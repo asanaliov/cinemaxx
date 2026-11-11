@@ -11,7 +11,7 @@
 }
 
 <div class="page-header align-items-center mb-4 pb-0 border-0">
-    <h1 class="display-6 fw-bold mb-0 text-white">Browse Movies</h1>
+    <h1 class="display-6 fw-bold mb-0 text-white">Browse movies</h1>
     @if (User.IsInRole("Admin"))
     {
         <a asp-action="Create" class="btn btn-success fw-bold">+ Create Movie</a>
@@ -21,27 +21,28 @@
 <!-- Cinematic Filter Bar -->
 <div class="card filter-bar border-0 mb-5 p-2 shadow-sm">
     <form method="get" class="row g-2 align-items-center">
-        <div class="col-12 col-sm-6 col-md-3">
+        <div class="col-12 col-sm-6 col-md">
             <input class="form-control bg-dark text-white border-0"
+                   aria-label="Search movies"
                    name="search"
                    value="@Context.Request.Query["search"]"
                    placeholder="🔍 Search movies…"/>
         </div>
         <div class="col-6 col-sm-4 col-md-2">
             <input class="form-control bg-dark text-white border-0"
-                   name="language"
+                   aria-label="Language" name="language"
                    value="@Context.Request.Query["language"]"
                    placeholder="🌐 Language"/>
         </div>
         <div class="col-6 col-sm-4 col-md-2">
-            <select class="form-select bg-dark text-white border-0" name="status">
+            <select class="form-select bg-dark text-white border-0" name="status" aria-label="Status">
                 <option value="">Status</option>
                 <option value="NowShowing" selected="@(Context.Request.Query["status"] == "NowShowing")">Now showing</option>
                 <option value="ComingSoon" selected="@(Context.Request.Query["status"] == "ComingSoon")">Coming soon</option>
             </select>
         </div>
         <div class="col-6 col-sm-4 col-md-2">
-            <select class="form-select bg-dark text-white border-0" name="day">
+            <select class="form-select bg-dark text-white border-0" name="day" aria-label="Day">
                 <option value="" selected="@(selectedDay is null)">Any day</option>
                 @foreach (var day in days)
                 {
@@ -50,7 +51,7 @@
             </select>
         </div>
         <div class="col-6 col-sm-4 col-md-2">
-            <select name="genreId" class="form-select bg-dark text-white border-0">
+            <select name="genreId" aria-label="Genre" class="form-select bg-dark text-white border-0">
                 <option value="">All genres</option>
                 @foreach (var genre in ViewBag.Genres)
                 {
@@ -58,8 +59,8 @@
                 }
             </select>
         </div>
-        <div class="col-12 col-md-1 ms-auto text-end">
-            <button class="btn btn-primary w-100 fw-bold" type="submit">Filter</button>
+        <div class="col-12 col-md-auto">
+            <button class="btn btn-primary w-100 fw-bold px-4" type="submit">Filter</button>
         </div>
     </form>
 </div>
@@ -82,7 +83,7 @@ else
                 <a class="movie-poster-wrap" asp-action="Details"
                    asp-route-id="@item.Id"
                    asp-route-day="@(selectedDay.HasValue ? selectedDay.Value.ToString() : null)">
-                    <img src="@(string.IsNullOrWhiteSpace(item.PosterUrl) ? "https://placehold.co/400x600/12172A/5B7B9A?text=No+Poster" : item.PosterUrl)"
+                    <img src="@(string.IsNullOrWhiteSpace(item.PosterUrl) ? "https://placehold.co/400x600/1A1814/D4A341?text=No+Poster" : item.PosterUrl)"
                          alt="@item.Title poster" loading="lazy"/>
                 </a>
                 <div class="movie-card-content flex-grow-1 d-flex flex-column">

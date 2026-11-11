@@ -1,6 +1,7 @@
-/* home page overrides — keeps ink-blue palette from site.css */
+/* home page overrides */
 
-body.home-page > .container {
+body.home-page > .container,
+body.home-page footer > .container {
     max-width: 1320px;
     padding-left: 1.25rem;
     padding-right: 1.25rem;
@@ -10,38 +11,76 @@ body.home-page main {
     padding-top: 0;
 }
 
-.home-motion-wordmark {
-    display: inline-block;
-    padding-right: .12em;
-    font-family: Georgia, 'Times New Roman', serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 1.12em;
-    letter-spacing: .025em;
-    color: #d4b17a;
+/* warm projector glow behind the headline */
+body.home-page {
+    background:
+        radial-gradient(900px 650px at 12% 0%, rgba(var(--accent-rgb), .13), transparent 70%),
+        var(--bg);
 }
 
-@supports ((background-clip: text) or (-webkit-background-clip: text)) {
-    .home-motion-wordmark {
-        background-image: linear-gradient(120deg, #ffffff 5%, #f4e6cf 40%, #d4b17a 70%, #b88943 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-    }
-}
-
-@media (forced-colors: active) {
-    .home-motion-wordmark {
-        background-image: none;
-        color: CanvasText;
-    }
-}
-
-/* ── hero marquee ────────────────────────────────────────── */
-.home-hero-marquee {
-    padding: 3.5rem 0 2.5rem;
+/* ── hero ────────────────────────────────────────────────── */
+.home-hero {
     position: relative;
+    padding: 5rem 0 1rem;
     overflow: hidden;
+}
+
+.home-hero-copy {
+    max-width: 640px;
+}
+
+.home-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    margin-bottom: 1.1rem;
+    color: var(--accent);
+    font-size: .85rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+}
+.home-eyebrow::before {
+    content: '';
+    width: 1.75rem;
+    height: 1px;
+    background: currentColor;
+}
+
+.home-hero-title {
+    margin: 0 0 1rem;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    font-stretch: 112%;
+    line-height: .98;
+    letter-spacing: -.035em;
+}
+
+.home-hero-lead {
+    max-width: 46ch;
+    margin-bottom: 2rem;
+    color: var(--text-muted);
+    font-size: 1.15rem;
+    line-height: 1.55;
+}
+
+.home-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.home-hero-link {
+    color: var(--text);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: rgba(var(--accent-rgb), .5);
+    text-underline-offset: .35em;
+    transition: text-decoration-color .2s, color .2s;
+}
+.home-hero-link:hover {
+    color: var(--text);
+    text-decoration-color: var(--accent);
 }
 
 .marquee-container {
@@ -100,6 +139,12 @@ body.home-page main {
     100% { transform: translateX(calc(-100% - 1.5rem)); }
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .marquee-group {
+        animation: none;
+    }
+}
+
 .home-hero-btn {
     display: inline-flex;
     align-items: center;
@@ -107,16 +152,20 @@ body.home-page main {
     padding: .85rem 1.6rem;
     border-radius: 999px;
     background: var(--accent);
-    color: #fff;
+    color: var(--on-accent);
     font-size: 1.05rem;
     font-weight: 600;
     text-decoration: none;
-    transition: background .2s, transform .2s;
+    transition: background .2s, transform .2s, box-shadow .2s;
 }
 .home-hero-btn:hover {
-    color: #fff;
+    color: var(--on-accent);
     background: var(--accent-hover);
     transform: translateY(-2px);
+    box-shadow: 0 10px 24px -8px rgba(var(--accent-rgb), .6);
+}
+.home-hero-btn:active {
+    transform: scale(.98);
 }
 
 /* ── sections ────────────────────────────────────────────── */
@@ -167,8 +216,8 @@ body.home-page main {
 }
 .home-movie-card:hover {
     transform: translateY(-6px);
-    border-color: rgba(91,123,154,.4);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.5), 0 0 15px rgba(91,123,154,.15);
+    border-color: rgba(var(--accent-rgb), .4);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.5), 0 0 15px rgba(var(--accent-rgb), .15);
 }
 
 .movie-poster-wrap {

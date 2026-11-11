@@ -35,7 +35,7 @@
 <div class="position-relative mb-5" style="border-radius: 16px; overflow: hidden; border: 1px solid var(--border);">
     <!-- Blurred Backdrop -->
     <div class="position-absolute w-100 h-100" style="
-        background-image: url('@(string.IsNullOrWhiteSpace(Model.PosterUrl) ? "https://placehold.co/400x600/12172A/5B7B9A?text=No+Poster" : Model.PosterUrl)');
+        background-image: url('@(string.IsNullOrWhiteSpace(Model.PosterUrl) ? "https://placehold.co/400x600/1A1814/D4A341?text=No+Poster" : Model.PosterUrl)');
         background-size: cover;
         background-position: center;
         filter: blur(40px);
@@ -53,7 +53,7 @@
             <!-- Poster -->
             <div class="col-sm-5 col-md-4 col-lg-3">
                 <div class="rounded overflow-hidden shadow-lg" style="aspect-ratio: 2/3; border: 1px solid rgba(255,255,255,0.1);">
-                    <img src="@(string.IsNullOrWhiteSpace(Model.PosterUrl) ? "https://placehold.co/400x600/12172A/5B7B9A?text=No+Poster" : Model.PosterUrl)"
+                    <img src="@(string.IsNullOrWhiteSpace(Model.PosterUrl) ? "https://placehold.co/400x600/1A1814/D4A341?text=No+Poster" : Model.PosterUrl)"
                          class="img-fluid w-100 h-100"
                          style="object-fit:cover"
                          alt="@Model.Title poster"/>
