@@ -1,0 +1,25 @@
+@model Cinemaxx.Models.ContactMessage
+
+@{
+    ViewData["Title"] = "Delete Message";
+}
+
+<div class="delete-confirm-card card mx-auto mt-4">
+    <div class="card-header d-flex align-items-center gap-2">
+        <span>⚠️</span>
+        <strong>@L["Confirm deletion"]</strong>
+    </div>
+    <div class="card-body">
+        <p class="mb-1">@L["Delete message from"]:</p>
+        <p class="fw-bold fs-5 mb-0">@Model.Name</p>
+        <p class="text-muted mb-3">@Model.Subject</p>
+        <p class="text-muted small">@L["This action cannot be undone."]</p>
+        <div class="d-flex gap-2 mt-4">
+            <form asp-action="Delete" method="post">
+                <input type="hidden" asp-for="Id"/>
+                <button class="btn btn-danger" type="submit">@L["Delete"]</button>
+            </form>
+            <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline-secondary">@L["Cancel"]</a>
+        </div>
+    </div>
+</div>
